@@ -1,3 +1,23 @@
+/* @media screen and (min-width: 576px) {
+  
+}
+
+@media screen and (min-width: 768px) {
+  
+}
+
+@media screen and (min-width: 992px) {
+  
+}
+
+@media screen and (min-width: 1200px) {
+  
+}
+
+@media screen and (min-width: 1900px) {
+  
+} */
+
 .main {
   font-family: 'Century Gothic', sans-serif;
 }
@@ -8,6 +28,7 @@
   margin-right: auto;
   padding-right: 8px;
   padding-left: 8px;
+  max-width: 100%;
 }
 
 @media screen and (min-width: 576px) {
@@ -50,15 +71,20 @@
   box-sizing: border-box;
   position: relative;
   overflow: hidden;
-  height: 100vh;
   background: linear-gradient(25deg, #498de7 0%,#5086e4 42%,#2488d6 77%,#038ed2 100%); 
   color: white;
+}
+
+@media screen and (min-width: 576px) {
+  .about {
+    height: 100vh;
+  }
 }
 
 .header {
   display: flex;
   justify-content: space-between;
-  margin-top: 30px;
+  margin-top: 10px;
 }
 
 .logo {
@@ -72,9 +98,10 @@
 
 .nav__list {
   display: flex;
-  flex-flow: row;
+  flex-flow: column;
   justify-content: space-between;
   align-items: center;
+  padding: 0;
 }
 
 .nav__link {
@@ -85,6 +112,7 @@
   font-size: 16px;
   margin: 16px 5px;
   font-weight: bold;
+  text-align: center;
 }
 
 .nav__link:hover {
@@ -109,28 +137,86 @@
   padding-top: 10px;
 }
 
-.content {
+.mobile-header {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+.mobile-logo {
   display: flex;
   align-items: center;
+}
+.mobile-logo__img {
+  width: 60px;
+}
+
+.panel {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(25deg, #498de7 0%,#5086e4 42%,#2488d6 77%,#038ed2 100%);
+  z-index: 999;
+  display: flex;
+  flex-flow: column;
+  padding: 80px 60px 40px;
+  justify-content: space-around;
+}
+
+@media screen and (min-width: 992px) {
+  .nav__list {
+    flex-flow: row;
+  }
+}
+
+.content {
+  display: flex;
+  align-items: flex-start;
   position: relative;
-  margin: 30px 0;
+  margin: 100px 0 20px;
   flex-flow: column;
   justify-content: space-between;
 }
 
+@media screen and (min-width: 576px) {
+  .content {
+    align-items: center;
+    margin: 40% 0;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .content {
+    margin: 30px 0;
+  }
+}
+
 .content__small {
-  position: absolute;
-  top: 4%;
-  left: 0;
   font-size: 14px;
   font-weight: bold;
+}
+
+@media screen and (min-width: 576px) {
+  .content__small {
+    position: absolute;
+    top: 4%;
+    left: 0;
+    font-size: 14px;
+    font-weight: bold;
+  }
 }
 
 .content__small::before {
   background: #e85a8b;
   content: "";
   position: absolute;
-  top: -20%;
+  top: -11px;
   left: 0;
   width: 33px;
   height: 2px;
@@ -139,44 +225,50 @@
 .content__image {
   width: 90%;
   z-index: 1;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .content__primary {
   font-weight: bold;
-  font-size: 33px;
+  font-size: 22px;
   margin-left: auto;
+  margin-top: 30px;
 }
 
 .content-aside {
   display: flex;
-  flex-flow: column;
+  padding: 20px 0;
+  align-items: center;
+  margin-top: 10px;
+  position: relative;
+}
+
+.content-aside::after {
+  background: #e85a8b;
+  content: "";
   position: absolute;
-  left: 0;
-  bottom: 40%;
+  top: 27px;
+  left: 105%;
+  width: 60px;
+  height: 2px;
 }
 
 .learn-more {
   font-size: 10px;
   text-transform: uppercase;
-  transform: rotate(-90deg) translateX(-55%) translateY(-667%);
   font-weight: bold;
+  padding-bottom: 3px;
 }
 
-.content-aside::before {
-  background: #e85a8b;
-  content: "";
-  position: absolute;
-  top: 350%;
-  left: 7px;
-  width: 2px;
-  height: 80px;
+.social {
+  display: flex;
 }
 
 .social__link {
   display: block;
   width: 15px;
   height: 15px;
-  ;
   padding: 3px 3px;
 }
 
@@ -192,62 +284,101 @@
   background: url("../img/vk-icon.png") no-repeat;
 }
 
-.molecule {
-  position: absolute;
+@media screen and (min-width: 576px) {
+  .content__small::before {
+    top: -20%;
+  }
+  .content__image {
+    margin: 0;
+  }
+  .content__primary {
+    font-size: 33px;
+    margin-top: 0;
+  }
+  .content-aside {
+    flex-flow: column;
+    position: absolute;
+    left: 0;
+    bottom: 40%;
+    padding: 0;
+    margin-top: 0;
+  }
+  .content-aside::before {
+    background: #e85a8b;
+    content: "";
+    position: absolute;
+    top: 350%;
+    left: 7px;
+    width: 2px;
+    height: 80px;
+  }
+  .social {
+    display: block;
+  }
+  .learn-more {
+    transform: rotate(-90deg) translateX(-55%) translateY(-667%);
+    padding-bottom: 0;
+  }
 }
 
-.molecule--1 {
-  background: url("../img/molecula-1-1.png") no-repeat;
-  background-size: cover;
-  top: 13%;
-  left: 3%;
-  width: 140px;
-  height: 140px;
-}
-
-.molecule--2 {
-  background: url("../img/molecula-1-2.png") no-repeat;
-  background-size: cover;
-  top: 20%;
-  right: 13%;
-  width: 130px;
-  height: 116px;
-}
-
-.molecule--3 {
-  background: url("../img/molecula-1-4.png") no-repeat;
-  background-size: cover;
-  top: 31%;
-  right: -5%;
-  width: 235px;
-  height: 237px;
-}
-
-.molecule--4 {
-  background: url("../img/molecula-2-1.png") no-repeat;
-  background-size: cover;
-  bottom: 19%;
-  left: -4%;
-  width: 176px;
-  height: 193px;
-}
-
-.molecule--5 {
-  background: url("../img/molecula-2-2.png") no-repeat;
-  background-size: cover;
-  bottom: 35%;
-  left: 5%;
-  width: 90px;
-  height: 77px;
-}
-
-.molecule--6 {
-  background: url("../img/colecula-2-3-last.png") no-repeat;
-  background-size: cover;
-  bottom: -11%;
-  left: 22%;
-  width: 193px;
-  height: 209px;
+@media screen and (min-width: 1200px) {
+  .molecule {
+    position: absolute;
+  }
+  
+  .molecule--1 {
+    background: url("../img/molecula-1-1.png") no-repeat;
+    background-size: cover;
+    top: 13%;
+    left: 3%;
+    width: 140px;
+    height: 140px;
+  }
+  
+  .molecule--2 {
+    background: url("../img/molecula-1-2.png") no-repeat;
+    background-size: cover;
+    top: 20%;
+    right: 13%;
+    width: 130px;
+    height: 116px;
+  }
+  
+  .molecule--3 {
+    background: url("../img/molecula-1-4.png") no-repeat;
+    background-size: cover;
+    top: 31%;
+    right: -5%;
+    width: 235px;
+    height: 237px;
+  }
+  
+  .molecule--4 {
+    background: url("../img/molecula-2-1.png") no-repeat;
+    background-size: cover;
+    bottom: 19%;
+    left: -4%;
+    width: 176px;
+    height: 193px;
+  }
+  
+  .molecule--5 {
+    background: url("../img/molecula-2-2.png") no-repeat;
+    background-size: cover;
+    bottom: 35%;
+    left: 5%;
+    width: 90px;
+    height: 77px;
+  }
+  
+  .molecule--6 {
+    background: url("../img/colecula-2-3-last.png") no-repeat;
+    background-size: cover;
+    bottom: -11%;
+    left: 22%;
+    width: 193px;
+    height: 209px;
+  }
 }
 
 .heading {
