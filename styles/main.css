@@ -1,0 +1,373 @@
+.main {
+  font-family: 'Century Gothic', sans-serif;
+}
+
+.container {
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+@media screen and (min-width: 576px) {
+  .container {
+    width: 544px;
+    max-width: 100%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 736px;
+    max-width: 100%;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .container {
+    width: 960px;
+    max-width: 100%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container {
+    width: 1168px;
+    max-width: 100%;
+  }
+}
+
+@media screen and (min-width: 1900px) {
+  .container {
+    width: 1400px;
+    max-width: 100%;
+  }
+}
+
+.about {
+  display: flex;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+  background: linear-gradient(25deg, #498de7 0%,#5086e4 42%,#2488d6 77%,#038ed2 100%); 
+  color: white;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo__img {
+  width: 120px;
+}
+
+.nav__list {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav__link {
+  padding: 10px 25px;
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 16px;
+  margin: 16px 5px;
+  font-weight: bold;
+}
+
+.nav__link:hover {
+  background: #ffde00;
+}
+
+.info {
+  font-weight: bold;
+  text-transform: uppercase;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.info__date {
+  font-size: 30px;
+}
+
+.info__place {
+  font-size: 16px;
+  padding-top: 10px;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin: 30px 0;
+  flex-flow: column;
+  justify-content: space-between;
+}
+
+.content__small {
+  position: absolute;
+  top: 4%;
+  left: 0;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.content__small::before {
+  background: #e85a8b;
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: 0;
+  width: 33px;
+  height: 2px;
+}
+
+.content__image {
+  width: 90%;
+  z-index: 1;
+}
+
+.content__primary {
+  font-weight: bold;
+  font-size: 33px;
+  margin-left: auto;
+}
+
+.content-aside {
+  display: flex;
+  flex-flow: column;
+  position: absolute;
+  left: 0;
+  bottom: 40%;
+}
+
+.learn-more {
+  font-size: 10px;
+  text-transform: uppercase;
+  transform: rotate(-90deg) translateX(-55%) translateY(-667%);
+  font-weight: bold;
+}
+
+.content-aside::before {
+  background: #e85a8b;
+  content: "";
+  position: absolute;
+  top: 350%;
+  left: 7px;
+  width: 2px;
+  height: 80px;
+}
+
+.social__link {
+  display: block;
+  width: 15px;
+  height: 15px;
+  ;
+  padding: 3px 3px;
+}
+
+.social__link--insta {
+  background: url("../img/insta-icon.png") no-repeat;
+}
+
+.social__link--fb {
+  background: url("../img/fb-icon.png") no-repeat;
+}
+
+.social__link-vk {
+  background: url("../img/vk-icon.png") no-repeat;
+}
+
+.molecule {
+  position: absolute;
+}
+
+.molecule--1 {
+  background: url("../img/molecula-1-1.png") no-repeat;
+  background-size: cover;
+  top: 13%;
+  left: 3%;
+  width: 140px;
+  height: 140px;
+}
+
+.molecule--2 {
+  background: url("../img/molecula-1-2.png") no-repeat;
+  background-size: cover;
+  top: 20%;
+  right: 13%;
+  width: 130px;
+  height: 116px;
+}
+
+.molecule--3 {
+  background: url("../img/molecula-1-4.png") no-repeat;
+  background-size: cover;
+  top: 31%;
+  right: -5%;
+  width: 235px;
+  height: 237px;
+}
+
+.molecule--4 {
+  background: url("../img/molecula-2-1.png") no-repeat;
+  background-size: cover;
+  bottom: 19%;
+  left: -4%;
+  width: 176px;
+  height: 193px;
+}
+
+.molecule--5 {
+  background: url("../img/molecula-2-2.png") no-repeat;
+  background-size: cover;
+  bottom: 35%;
+  left: 5%;
+  width: 90px;
+  height: 77px;
+}
+
+.molecule--6 {
+  background: url("../img/colecula-2-3-last.png") no-repeat;
+  background-size: cover;
+  bottom: -11%;
+  left: 22%;
+  width: 193px;
+  height: 209px;
+}
+
+.heading {
+  font-weight: bold;
+  font-size: 46px;
+  padding-top: 50px;
+  text-align: center;
+}
+
+.years {
+  text-align: center;
+}
+
+.year {
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+  margin: 0 10px;
+}
+
+.year--active {
+  font-weight: bold;
+  color: #038ed2;
+}
+
+.image {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.image__picture {
+  object-fit: cover;
+  position: absolute;
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.collage {
+  overflow: hidden;
+  margin: 30px 0 30px -3px;
+  min-height: 450px;
+}
+
+.collage__container {
+  display: flex;
+  width: 110%;
+  flex-flow: row;
+}
+
+.collage__block {
+  padding: 3px;
+  height: calc(100% - 6px);
+}
+
+
+.collage__text {
+  padding: 10px;
+}
+
+.collage__text--primary {
+  color: #038ed2;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.collage__text--default {
+  font-size: 18px;
+  font-weight: bold;
+  padding-bottom: 8px;
+}
+
+.collage__text--secondary {
+  font-size: 12px;
+}
+
+.artists {
+  background-color: #038ed2;
+  color: white;
+  padding-bottom: 60px;
+}
+
+.artists__year {
+  color: white;
+}
+
+.artists__year--active {
+  font-weight: bold;
+}
+
+.artists__block {
+  padding: 30px;
+}
+
+.artists__img {
+  width: 100%;
+}
+
+.artists__name {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 15px;
+  line-height: 1.2;
+}
+
+.program {
+  padding-bottom: 50px;
+}
+
+.program__img {
+  width: 100%;
+}
+
+.program__text {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 16px;
+  font-size: 18px;
+  line-height: 1.3;
+}

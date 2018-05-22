@@ -1,0 +1,126 @@
+.ratio {
+  position: relative;
+}
+
+.ratio__expander {
+  height: 0;
+}
+
+@media screen {
+  .ratio__expander_xs-1x1 {
+    padding-bottom: 100%;
+  }
+
+  .ratio__expander_xs-3x2 {
+    padding-bottom: 66.67%;
+  }
+
+  .ratio__expander_xs-2x1 {
+    padding-bottom: 50%;
+  }
+
+  .ratio__expander_xs-4x1 {
+    padding-bottom: 25%;
+  }
+  .ratio__expander_xs-2x3 {
+    padding-bottom: 133.33%;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .ratio__expander_sm-1x1 {
+    padding-bottom: 100%;
+  }
+
+  .ratio__expander_sm-3x2 {
+    padding-bottom: 66.67%;
+  }
+
+  .ratio__expander_sm-2x1 {
+    padding-bottom: 50%;
+  }
+
+  .ratio__expander_sm-4x1 {
+    padding-bottom: 25%;
+  }
+  .ratio__expander_sm-2x3 {
+    padding-bottom: 133.33%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .ratio__expander_md-1x1 {
+    padding-bottom: 100%;
+  }
+
+  .ratio__expander_md-3x2 {
+    padding-bottom: 66.67%;
+  }
+
+  .ratio__expander_md-2x1 {
+    padding-bottom: 50%;
+  }
+
+  .ratio__expander_md-4x1 {
+    padding-bottom: 25%;
+  }
+  .ratio__expander_md-2x3 {
+    padding-bottom: 133.33%;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .ratio__expander_lg-1x1 {
+    padding-bottom: 100%;
+  }
+
+  .ratio__expander_lg-3x2 {
+    padding-bottom: 66.67%;
+  }
+
+  .ratio__expander_lg-2x1 {
+    padding-bottom: 50%;
+  }
+
+  .ratio__expander_lg-4x1 {
+    padding-bottom: 25%;
+  }
+  .ratio__expander_lg-2x3 {
+    padding-bottom: 133.33%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .ratio__expander_xl-1x1 {
+    padding-bottom: 100%;
+  }
+
+  .ratio__expander_xl-3x2 {
+    padding-bottom: 66.67%;
+  }
+
+  .ratio__expander_xl-2x1 {
+    padding-bottom: 50%;
+  }
+
+  .ratio__expander_xl-4x1 {
+    padding-bottom: 25%;
+  }
+  .ratio__expander_xl-2x3 {
+    padding-bottom: 133.33%;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .ratio__expander_xxl-1x1 {
+    padding-bottom: 100%;
+  }
+}
+
+.ratio__content {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
