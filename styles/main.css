@@ -75,7 +75,7 @@
   color: white;
 }
 
-@media screen and (min-width: 576px) {
+@media screen and (min-width: 922px) {
   .about {
     height: 100vh;
   }
@@ -141,8 +141,9 @@
   position: fixed;
   display: flex;
   justify-content: space-between;
-  padding: 10px 0;
-  width: 100%;
+  padding: 10px 5px;
+  left: 0;
+  right: 0;
   box-sizing: border-box;
   z-index: 1000;
 }
@@ -153,6 +154,21 @@
 }
 .mobile-logo__img {
   width: 60px;
+}
+
+@media screen and (min-width: 768px) {
+  .mobile-header {
+    padding: 20px;
+  }
+  .mobile-logo__img {
+    width: 80px;
+  }
+}
+
+@media screen and (min-width: 922px) {
+  .mobile-header {
+    padding: 30px;
+  }
 }
 
 .panel {
@@ -169,7 +185,7 @@
   justify-content: space-around;
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 1200px) {
   .nav__list {
     flex-flow: row;
   }
@@ -186,8 +202,13 @@
 
 @media screen and (min-width: 576px) {
   .content {
+    margin: 15% 0 8%;
+  }
+}
+
+@media screen and (min-width: 922px) {
+  .content {
     align-items: center;
-    margin: 40% 0;
   }
 }
 
@@ -204,11 +225,13 @@
 
 @media screen and (min-width: 576px) {
   .content__small {
+  }
+}
+@media screen and (min-width: 922px) {
+  .content__small {
     position: absolute;
-    top: 4%;
     left: 0;
-    font-size: 14px;
-    font-weight: bold;
+    top: 0;
   }
 }
 
@@ -224,6 +247,8 @@
 
 .content__image {
   width: 90%;
+  height: 100%;
+  display: block;
   z-index: 1;
   margin-left: auto;
   margin-right: auto;
@@ -284,7 +309,13 @@
   background: url("../img/vk-icon.png") no-repeat;
 }
 
-@media screen and (min-width: 576px) {
+@media screen and (min-width: 768px) {
+  .content__small::before {
+    top: -3%;
+  }
+}
+
+@media screen and (min-width: 922px) {
   .content__small::before {
     top: -20%;
   }
@@ -293,7 +324,7 @@
   }
   .content__primary {
     font-size: 33px;
-    margin-top: 0;
+    margin-top: 20px;
   }
   .content-aside {
     flex-flow: column;
@@ -302,18 +333,25 @@
     bottom: 40%;
     padding: 0;
     margin-top: 0;
+    z-index: 2;
+  }
+  .content-aside::after {
+    display: none;
   }
   .content-aside::before {
     background: #e85a8b;
     content: "";
     position: absolute;
-    top: 350%;
+    top: 200px;
     left: 7px;
     width: 2px;
     height: 80px;
   }
   .social {
     display: block;
+    position: absolute;
+    left: 0;
+    top: -60px;
   }
   .learn-more {
     transform: rotate(-90deg) translateX(-55%) translateY(-667%);
@@ -325,55 +363,116 @@
   .molecule {
     position: absolute;
   }
-  
   .molecule--1 {
     background: url("../img/molecula-1-1.png") no-repeat;
     background-size: cover;
+    top: 23%;
+    left: -2%;
+    width: 140px;
+    height: 140px;
+  }
+  .molecule--2 {
+    background: url("../img/molecula-1-2.png") no-repeat;
+    background-size: cover;
+    top: 17%;
+    right: 13%;
+    width: 130px;
+    height: 116px;
+  }
+  .molecule--3 {
+    background: url("../img/molecula-1-4.png") no-repeat;
+    background-size: cover;
+    top: 39%;
+    right: -6%;
+    width: 217px;
+    height: 222px;
+  }
+  .molecule--4 {
+    background: url("../img/molecula-2-1.png") no-repeat;
+    background-size: cover;
+    bottom: 12%;
+    left: -5%;
+    width: 176px;
+    height: 193px;
+    z-index: 2;
+  }
+  .molecule--5 {
+    background: url("../img/molecula-2-2.png") no-repeat;
+    background-size: cover;
+    bottom: 21%;
+    left: 10%;
+    width: 85px;
+    height: 72px;
+  }
+  .molecule--6 {
+    background: url("../img/colecula-2-3-last.png") no-repeat;
+    background-size: cover;
+    bottom: -11%;
+    left: 22%;
+    width: 193px;
+    height: 209px;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .molecule--1 {
+    top: 24%;
+    left: 1%;
+  }
+  .molecule--2 {
+    top: 20%;
+    right: 13%;
+  }
+  .molecule--3 {
+    top: 35%;
+    right: -5%;
+  }
+  .molecule--4 {
+    bottom: 12%;
+    left: -4%;
+  }
+  .molecule--5 {
+    bottom: 21%;
+    left: 11%;
+  }
+  .molecule--6 {
+    bottom: -10%;
+    left: 25%;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .molecule--1 {
     top: 13%;
     left: 3%;
     width: 140px;
     height: 140px;
   }
-  
   .molecule--2 {
-    background: url("../img/molecula-1-2.png") no-repeat;
-    background-size: cover;
     top: 20%;
     right: 13%;
     width: 130px;
     height: 116px;
   }
-  
   .molecule--3 {
-    background: url("../img/molecula-1-4.png") no-repeat;
-    background-size: cover;
     top: 31%;
     right: -5%;
     width: 235px;
     height: 237px;
   }
-  
   .molecule--4 {
-    background: url("../img/molecula-2-1.png") no-repeat;
-    background-size: cover;
     bottom: 19%;
     left: -4%;
     width: 176px;
     height: 193px;
   }
-  
   .molecule--5 {
-    background: url("../img/molecula-2-2.png") no-repeat;
-    background-size: cover;
     bottom: 35%;
     left: 5%;
     width: 90px;
     height: 77px;
   }
-  
   .molecule--6 {
-    background: url("../img/colecula-2-3-last.png") no-repeat;
-    background-size: cover;
     bottom: -11%;
     left: 22%;
     width: 193px;
@@ -422,12 +521,23 @@
   overflow: hidden;
   margin: 30px 0 30px -3px;
   min-height: 450px;
+  position: relative;
 }
 
 .collage__container {
   display: flex;
-  width: 110%;
   flex-flow: row;
+  flex-wrap: wrap;
+}
+
+@media screen and (min-width: 1200px) {
+  .collage__container {
+    left: -5%;
+    right: -5%;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+  }
 }
 
 .collage__block {
@@ -437,7 +547,13 @@
 
 
 .collage__text {
-  padding: 10px;
+  padding: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .collage__text {
+    padding: 10px;
+  }
 }
 
 .collage__text--primary {
@@ -495,10 +611,15 @@
 }
 
 .program__text {
-  width: 60%;
-  margin-left: auto;
-  margin-right: auto;
   padding: 16px;
   font-size: 18px;
   line-height: 1.3;
+}
+
+@media screen and (min-width: 768px) {
+  .program__text {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }

@@ -80,7 +80,7 @@
               <br> атмосфера, которая
               <br> витает в воздухе
             </div>
-            <img class="content__image" src="img/jazz-1.png" alt="Jazz Science Сколово">
+            <img class="content__image" :src="'img/jazz-'+random()+'.png'" alt="Jazz Science Сколово">
             <div class="content__primary">
               место, где наука
               <br> и музыка соединяются, —
@@ -98,12 +98,12 @@
           </div>
   
         </div>
-        <div class="molecule molecule--1"></div>
-        <div class="molecule molecule--2"></div>
-        <div class="molecule molecule--3"></div>
-        <div class="molecule molecule--4"></div>
-        <div class="molecule molecule--5"></div>
-        <div class="molecule molecule--6"></div>
+        <div class="molecule molecule--1" id="js-molecule-1"></div>
+        <div class="molecule molecule--2" id="js-molecule-2"></div>
+        <div class="molecule molecule--3" id="js-molecule-3"></div>
+        <div class="molecule molecule--4" id="js-molecule-4"></div>
+        <div class="molecule molecule--5" id="js-molecule-5"></div>
+        <div class="molecule molecule--6" id="js-molecule-6"></div>
       </section>
   
       <section class="howitwas" id="howitwas">
@@ -115,9 +115,9 @@
           </div>
         </div>
   
-        <div class="collage">
-          <div class="collage__container">
-            <div class="col-xs-12 col-md-2 col-lg-3">
+        <div class="collage" id="js-collage-wrapper">
+          <div class="collage__container" id="js-collage-container">
+            <div class="col-xs-12 col-md-6 col-xl-3">
               <div class="row">
                 <div class="col-xs-6">
                   <div class="ratio">
@@ -157,7 +157,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-xs-12 col-md-2 col-lg-3">
+            <div class="col-xs-12 col-md-6 col-xl-3">
               <div class="row">
                 <div class="col-xs-6">
                   <div class="ratio">
@@ -228,7 +228,7 @@
               </div>
             </div>
   
-            <div class="col-xs-12 col-md-2- col-lg-3">
+            <div class="col-xs-12 col-md-6 col-xl-3">
               <div class="row">
                 <div class="col-xs-12">
                   <div class="ratio">
@@ -271,7 +271,7 @@
               </div>
             </div>
   
-            <div class="col-xs-12 col-md-2 col-lg-3">
+            <div class="col-xs-12 col-md-6 col-xl-3">
               <div class="row">
                 <div class="col-xs-6">
                   <div class="ratio">
@@ -435,7 +435,7 @@
   </div>
 
   <script type="text/javascript" src="js/vue.min.js"></script>
-  <script type="text/javascript" src="js/main.js"></script>
+  <script type="text/javascript" src="js/dist.js"></script>
 </body>
 
 </html>
