@@ -1,4 +1,4 @@
-@import 'breakpoints.scss';
+@import "breakpoints.scss";
 
 $resolution: 4;
 
@@ -14,7 +14,7 @@ $resolution: 4;
       @for $j from 1 through $resolution {
         @if ($i != $j or $i == 1) {
           &__expander--#{$size}-#{$i}x#{$j} {
-            padding-bottom: percentage($i / $j);
+            padding-bottom: percentage($j / $i);
           }
         }
       }
