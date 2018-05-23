@@ -1,0 +1,80 @@
+@import 'breakpoints.scss';
+
+$columns: 12;
+
+.row {
+  box-sizing: border-box;
+  display: flex;
+  flex: 0 1 auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.col {
+  box-sizing: border-box;
+  flex-grow: 1;
+  flex-basis: 0;
+  max-width: 100%;
+}
+
+@mixin make-cols($size, $columns: $columns) {
+  @for $i from 1 through $columns {
+    .col-#{$size}-#{$i} {
+      flex-basis: percentage($i / $columns);
+      max-width: percentage($i / $columns);
+    }
+
+    .col-#{$size}-offset-#{$i} {
+      margin-left: percentage($i / $columns);
+    }
+  }
+}
+
+@mixin make-alignments($size) {
+  .row-#{$size}-start {
+    justify-content: flex-start;
+  }
+
+  .row-#{$size}-center {
+    justify-content: center;
+  }
+
+  .row-#{$size}-end {
+    justify-content: flex-end;
+  }
+
+  .row-#{$size}-around {
+    justify-content: space-around;
+  }
+
+  .row-#{$size}-between {
+    justify-content: space-between;
+  }
+
+  .row-#{$size}-top {
+    align-items: flex-start;
+  }
+
+  .row-#{$size}-middle {
+    align-items: center;
+  }
+
+  .row-#{$size}-bottom {
+    align-items: flex-end;
+  }
+
+  .col-#{$size}-first {
+    order: -1;
+  }
+
+  .col-#{$size}-last {
+    order: 1;
+  }
+}
+
+@each $name, $size in $grid-breakpoints {
+  @include breakpoint-up($size) {
+    @include make-cols($name);
+    @include make-alignments($name);
+  }
+}
