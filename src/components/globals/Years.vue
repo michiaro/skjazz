@@ -27,6 +27,7 @@ export default {
 
 <style lang="scss">
 .years {
+  $block: &;
   text-align: center;
 
   &__item {
@@ -36,6 +37,8 @@ export default {
     margin: 0 10px;
     border: none;
     color: #038ed2;
+    padding: 8px 16px;
+    text-decoration: underline;
 
     &:focus {
       outline: none;
@@ -46,7 +49,13 @@ export default {
     }
 
     &--active {
-      font-weight: bold;
+      background: #038ed2;
+      color: white;
+      text-decoration: none;
+    }
+    &--contrast#{$block}__item--active {
+      background: white;
+      color: #038ed2;
     }
   }
 }
