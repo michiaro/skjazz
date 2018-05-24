@@ -79,9 +79,18 @@
     section#howitwas.howitwas
       .container
         h2.howitwas__heading.heading Как это было?
-        Years(:currentYear="currentYear", @set="setYear")
+        p
+        .years
+          button.years__item(
+            @click="slideTo(0)",
+            :class="{'years__item--active': activeIndex < 4}"
+            ) 2016
+          button.years__item(
+            @click="slideTo(4)",
+            :class="{'years__item--active': activeIndex >= 4}"
+            ) 2017
       .collage
-        swiper(:options="swiperOption" ref="mySwiper")
+        swiper(:options="newsfeedOption" ref="newsfeedSwiper")
           swiper-slide
             .row
               .col.col-xs-6
@@ -89,22 +98,19 @@
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
                     .collage__block
-                      .image
-                        img.image__picture(src="static/img/2016-1.jpg")
+                      preview(:source="gallery.image_2016_01", @open="openGallery")
               .col.col-xs-6
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
                     .collage__block
-                      .image
-                        img.image__picture(src="static/img/2016-2.jpg")
+                      preview(:source="gallery.image_2016_02", @open="openGallery")
               .col.col-xs-12
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
                     .collage__block
-                      .image
-                        img.image__picture(src="static/img/2016-3.jpg")
+                      preview(:source="gallery.image_2016_03", @open="openGallery")
           swiper-slide
             .row
               .col.col-xs-6
@@ -112,8 +118,7 @@
                   .ratio__expander.ratio__expander--xs-3x4
                   .ratio__content
                     .collage__block
-                      .image
-                        img.image__picture(src="static/img/2016-4.jpg")
+                      preview(:source="gallery.image_2016_04", @open="openGallery")
               .col.col-xs-6
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
@@ -127,8 +132,7 @@
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
                     .collage__block
-                      .image
-                        img.image__picture(src="static/img/2016-5.jpg")
+                      preview(:source="gallery.image_2016_05", @open="openGallery")
             .row
               .col.col-xs-6
                 .ratio
@@ -144,8 +148,7 @@
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
                     .collage__block
-                      .image
-                        img.image__picture(src="static/img/2016-6.jpg")
+                      preview(:source="gallery.image_2016_06", @open="openGallery")
           swiper-slide
             .row
               .col.col-xs-12
@@ -153,15 +156,13 @@
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
                     .collage__block
-                      .image
-                        img.image__picture(src="static/img/2016-7.jpg")
+                      preview(:source="gallery.image_2016_07", @open="openGallery")
               .col.col-xs-6
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
                     .collage__block
-                      .image
-                        img.image__picture(src="static/img/2016-8.jpg")
+                      preview(:source="gallery.image_2016_08", @open="openGallery")
               .col.col-xs-6
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
@@ -176,22 +177,19 @@
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
                     .collage__block
-                      .image
-                        img.image__picture(src="static/img/2016-9.jpg")
+                      preview(:source="gallery.image_2016_09", @open="openGallery")
               .col.col-xs-6
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
                     .collage__block
-                      .image
-                        img.image__picture(src="static/img/2016-10.jpg")
+                      preview(:source="gallery.image_2016_10", @open="openGallery")
               .col.col-xs-12
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
                     .collage__block
-                      .image
-                        img.image__picture(src="static/img/2016-11.jpg")
+                      preview(:source="gallery.image_2016_11", @open="openGallery")
           swiper-slide
             .row
               .col.col-xs-6
@@ -199,22 +197,19 @@
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
                     .collage__block
-                      .image
-                        img.image__picture(src="static/img/2017-1.jpg")
+                      preview(:source="gallery.image_2017_01", @open="openGallery")
               .col.col-xs-6
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
                     .collage__block
-                      .image
-                        img.image__picture(src="static/img/2017-2.png")
+                      preview(:source="gallery.image_2017_02", @open="openGallery")
               .col.col-xs-12
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
                     .collage__block
-                      .image
-                        img.image__picture(src="static/img/2017-3.png")
+                      preview(:source="gallery.image_2017_03", @open="openGallery")
           swiper-slide
             .row
               .col.col-xs-6
@@ -222,8 +217,7 @@
                   .ratio__expander.ratio__expander--xs-3x4
                   .ratio__content
                     .collage__block
-                      .image
-                        img.image__picture(src="static/img/2017-4.png")
+                      preview(:source="gallery.image_2017_04", @open="openGallery")
               .col.col-xs-6
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
@@ -237,8 +231,7 @@
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
                     .collage__block
-                      .image
-                        img.image__picture(src="static/img/2017-5.png")
+                      preview(:source="gallery.image_2017_05", @open="openGallery")
             .row
               .col.col-xs-6
                 .ratio
@@ -254,8 +247,7 @@
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
                     .collage__block
-                      .image
-                        img.image__picture(src="static/img/2017-6.png")
+                      preview(:source="gallery.image_2017_06", @open="openGallery")
           swiper-slide
             .row
               .col.col-xs-12
@@ -263,15 +255,13 @@
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
                     .collage__block
-                      .image
-                        img.image__picture(src="static/img/2017-7.png")
+                      preview(:source="gallery.image_2017_07", @open="openGallery")
               .col.col-xs-6
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
                     .collage__block
-                      .image
-                        img.image__picture(src="static/img/2017-8.png")
+                      preview(:source="gallery.image_2017_08", @open="openGallery")
               .col.col-xs-6
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
@@ -288,22 +278,19 @@
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
                     .collage__block
-                      .image
-                        img.image__picture(src="static/img/2017-9.png")
+                      preview(:source="gallery.image_2017_09", @open="openGallery")
               .col.col-xs-6
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
                     .collage__block
-                      .image
-                        img.image__picture(src="static/img/2017-10.png")
+                      preview(:source="gallery.image_2017_10", @open="openGallery")
               .col.col-xs-12
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
                     .collage__block
-                      .image
-                        img.image__picture(src="static/img/2017-11.png")
+                      preview(:source="gallery.image_2017_11", @open="openGallery")
     section#artists.artists
       .container
         h2.artists__heading.heading Приглашенные артисты
@@ -330,7 +317,6 @@
               | любимые и&nbsp;известные проекты московского стрит-фуда.
             p Для самых маленьких гостей была организована программа
               | от&nbsp;семейного кафе &laquo;Андерсон&raquo; и&nbsp;&laquo;SHUSHA-TOYS&raquo;
-
         .program__content(v-if="currentYear === 'year2017'")
           img.program__img(src="static/img/program-2017.png", alt="Программа фестиваля 2017")
           .program__text
@@ -352,11 +338,21 @@
               | головоломками. Для всех гостей на&nbsp;территории фестиваля были организованы
               | Книжная ярмарка и&nbsp;Винил-маркет, а&nbsp;также фестиваль фудтраков, дополненный
               | изысканным выездным рестораном от&nbsp;OsteriaMario.
-
     section#partners.partners
       .container
         h2.heading Партнеры
         img(src="static/img/partners.png", alt="Партнеры", class="preview")
+  .popup(v-if="isGalleryOpen")
+    button.popup__close(@click.stop="closeGallery")
+      svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 371.23 371.23")
+        path(d="M371.23 21.213L350.018 0 185.615 164.402 21.213 0 0 21.213l164.402 164.402L0 350.018l21.213 21.212 164.402-164.402L350.018 371.23l21.212-21.212-164.402-164.403z")
+    swiper(:options="galleryOptions" ref="gallerySwiper")
+      template(v-for="slide in gallery")
+        swiper-slide.popup__slide
+          img(:src="slide.full").popup__image
+      .swiper-pagination.swiper-pagination-white(slot="pagination")
+      .swiper-button-prev.swiper-button-white(slot="button-prev")
+      .swiper-button-next.swiper-button-white(slot="button-next")
 </template>
 
 <script>
@@ -368,7 +364,7 @@ export default {
       isMenuOpen: false,
       isMobile: false,
       isScrolled: false,
-      swiperOption: {
+      newsfeedOption: {
         speed: 667,
         spaceBetween: 0,
         slidesPerView: 4,
@@ -386,9 +382,112 @@ export default {
           },
         },
       },
+      activeIndex: 0,
+      gallery: {
+        image_2016_01: {
+          thumb: 'static/img/2016-1.jpg',
+          full: 'static/img/2016/1.jpg',
+        },
+        image_2016_02: {
+          thumb: 'static/img/2016-2.jpg',
+          full: 'static/img/2016/2.jpg',
+        },
+        image_2016_03: {
+          thumb: 'static/img/2016-3.jpg',
+          full: 'static/img/2016/3.jpg',
+        },
+        image_2016_04: {
+          thumb: 'static/img/2016-4.jpg',
+          full: 'static/img/2016/4.jpg',
+        },
+        image_2016_05: {
+          thumb: 'static/img/2016-5.jpg',
+          full: 'static/img/2016/5.jpg',
+        },
+        image_2016_06: {
+          thumb: 'static/img/2016-6.jpg',
+          full: 'static/img/2016/6.jpg',
+        },
+        image_2016_07: {
+          thumb: 'static/img/2016-7.jpg',
+          full: 'static/img/2016/7.jpg',
+        },
+        image_2016_08: {
+          thumb: 'static/img/2016-8.jpg',
+          full: 'static/img/2016/8.jpg',
+        },
+        image_2016_09: {
+          thumb: 'static/img/2016-9.jpg',
+          full: 'static/img/2016/9.jpg',
+        },
+        image_2016_10: {
+          thumb: 'static/img/2016-10.jpg',
+          full: 'static/img/2016/10.jpg',
+        },
+        image_2016_11: {
+          thumb: 'static/img/2016-11.jpg',
+          full: 'static/img/2016/11.jpg',
+        },
+        image_2017_01: {
+          thumb: 'static/img/2017-1.jpg',
+          full: 'static/img/2017/1.jpg',
+        },
+        image_2017_02: {
+          thumb: 'static/img/2017-2.png',
+          full: 'static/img/2017/2.jpg',
+        },
+        image_2017_03: {
+          thumb: 'static/img/2017-3.png',
+          full: 'static/img/2017/3.jpg',
+        },
+        image_2017_04: {
+          thumb: 'static/img/2017-4.png',
+          full: 'static/img/2017/4.jpg',
+        },
+        image_2017_05: {
+          thumb: 'static/img/2017-5.png',
+          full: 'static/img/2017/5.jpg',
+        },
+        image_2017_06: {
+          thumb: 'static/img/2017-6.png',
+          full: 'static/img/2017/6.jpg',
+        },
+        image_2017_07: {
+          thumb: 'static/img/2017-7.png',
+          full: 'static/img/2017/7.jpg',
+        },
+        image_2017_08: {
+          thumb: 'static/img/2017-8.png',
+          full: 'static/img/2017/8.jpg',
+        },
+        image_2017_09: {
+          thumb: 'static/img/2017-9.png',
+          full: 'static/img/2017/9.jpg',
+        },
+        image_2017_10: {
+          thumb: 'static/img/2017-10.png',
+          full: 'static/img/2017/10.jpg',
+        },
+        image_2017_11: {
+          thumb: 'static/img/2017-11.png',
+          full: 'static/img/2017/11.jpg',
+        },
+      },
+      isGalleryOpen: false,
+      galleryOptions: {
+        pagination: {
+          el: '.swiper-pagination',
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        initialSlide: 0,
+      },
       currentYear: 'year2016',
       content: {
         year2017: {
+          title: '2017',
           artists: [
             { src: 'static/img/marimba.png', name: 'Маримба+' },
             { src: 'static/img/scristian.png', name: 'Cristian Sans Trio' },
@@ -405,6 +504,7 @@ export default {
           ],
         },
         year2016: {
+          title: '2016',
           artists: [
             { src: 'static/img/ilya-i-azat.png', name: 'Группа Ильи Морозова и Азата Баязитова' },
             { src: 'static/img/sergey-quintet.png', name: 'Квинтет Сергея Долженкова' },
@@ -424,13 +524,20 @@ export default {
   },
   computed: {
     swiper() {
-      return this.$refs.mySwiper.swiper;
+      return this.$refs.newsfeedSwiper.swiper;
+    },
+    galleryArray() {
+      return Object.values(this.gallery);
     },
   },
   mounted() {
     this.$nextTick(() => {
       window.addEventListener('resize', this.handleResize);
       this.handleResize();
+
+      this.swiper.on('slideChangeTransitionEnd', () => {
+        this.activeIndex = this.swiper.activeIndex;
+      });
 
       const wrapper = document.getElementById('about');
       const layers = {
@@ -494,6 +601,17 @@ export default {
     },
     setYear(year) {
       this.currentYear = year;
+    },
+    slideTo(index) {
+      this.swiper.slideTo(index);
+    },
+    openGallery(slide) {
+      const index = this.galleryArray.indexOf(slide);
+      this.galleryOptions.initialSlide = index;
+      this.isGalleryOpen = true;
+    },
+    closeGallery() {
+      this.isGalleryOpen = false;
     },
   },
 };

@@ -499,20 +499,6 @@
   text-align: center;
 }
 
-.image {
-  height: 100%;
-  overflow: hidden;
-  position: relative;
-}
-
-.image__picture {
-  object-fit: cover;
-  position: absolute;
-  display: block;
-  height: 100%;
-  width: 100%;
-}
-
 .collage {
   margin: 30px 0 60px;
 }
@@ -607,4 +593,39 @@
 
 .partners {
   padding: 60px 0;
+}
+
+.popup {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  position: fixed;
+  &__slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh !important;
+  }
+  &__image {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  &__close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 32px;
+    top: 32px;
+    z-index: 2;
+
+    & svg {
+      width: 44px;
+      height: 44px;
+      fill: white;
+    }
+  }
 }
