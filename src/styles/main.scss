@@ -113,10 +113,16 @@
   margin: 16px 5px;
   font-weight: bold;
   text-align: center;
+
+  &--contrast {
+    background: white;
+    color: #038ed2;
+  }
 }
 
 .nav__link:hover {
   background: #ffde00;
+  color: #038ed2;
 }
 
 .info {

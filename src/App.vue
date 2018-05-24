@@ -24,7 +24,7 @@
                 a.nav__link(href="#artists") Артисты
                 a.nav__link(href="#program") Программа
                 a.nav__link(href="#partners") Партнеры
-                a.nav__link(
+                a.nav__link.nav__link--contrast(
                   target="_blank",
                   href="https://msk.kassir.ru/frame/event/104230?key=d68c4b88-00fb-ee51-8fdd-fec9d1c99539"
                 ) Купить Билеты
@@ -37,7 +37,7 @@
               a.nav__link(href="#artists") Артисты
               a.nav__link(href="#program") Программа
               a.nav__link(href="#partners") Партнеры
-              a.nav__link(
+              a.nav__link.nav__link--contrast(
                 target="_blank",
                 href="https://msk.kassir.ru/frame/event/104230?key=d68c4b88-00fb-ee51-8fdd-fec9d1c99539"
               ) Купить Билеты
@@ -371,12 +371,7 @@ export default {
       swiperOption: {
         speed: 667,
         spaceBetween: 0,
-        freeMode: true,
         slidesPerView: 4,
-        loop: true,
-        autoplay: {
-          delay: 1000,
-        },
         observer: true,
         observeParents: true,
         breakpoints: {
