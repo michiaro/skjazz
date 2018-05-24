@@ -379,6 +379,17 @@ export default {
         },
         observer: true,
         observeParents: true,
+        breakpoints: {
+          575: {
+            slidesPerView: 1,
+          },
+          767: {
+            slidesPerView: 2,
+          },
+          1023: {
+            slidesPerView: 3,
+          },
+        },
       },
       currentYear: 'year2016',
       content: {
@@ -484,7 +495,7 @@ export default {
       this.isMenuOpen = false;
     },
     random() {
-      return Math.floor(Math.random() * 3) + 1;
+      return Math.floor(Math.random() * 4) + 1;
     },
     setYear(year) {
       this.currentYear = year;

@@ -1,5 +1,4 @@
 import 'normalize.css';
-import 'hamburgers';
 import '@/styles/main.scss';
 import '@/components/globals';
 import Vue from 'vue';
