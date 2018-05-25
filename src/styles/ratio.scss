@@ -1,0 +1,37 @@
+@import "breakpoints.scss";
+
+$resolution: 4;
+
+.ratio {
+  position: relative;
+
+  &__expander {
+    height: 0;
+  }
+
+  @mixin make-expanders($size) {
+    @for $i from 1 through $resolution {
+      @for $j from 1 through $resolution {
+        @if ($i != $j or $i == 1) {
+          &__expander--#{$size}-#{$i}x#{$j} {
+            padding-bottom: percentage($j / $i);
+          }
+        }
+      }
+    }
+  }
+
+  @each $name, $size in $grid-breakpoints {
+    @include breakpoint-up($size) {
+      @include make-expanders($name);
+    }
+  }
+
+  &__content {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
