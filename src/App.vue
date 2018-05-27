@@ -6,6 +6,9 @@
         header.mobile-header(v-if="isMobile", v-cloak="")
           a.mobile-logo(href="/")
             img.mobile-logo__img(src="static/img/logo.png")
+          .info
+            .info__date 25 августа
+            .info__place Москва | Сколково
           button.hamburger.hamburger--emphatic(
             :class="{'is-active' : isMenuOpen}",
             type="button",
@@ -15,9 +18,6 @@
               span.hamburger-inner
         transition(name="slide")
           aside#left-menu.panel(v-if="isMobile && isMenuOpen", v-cloak="")
-            .info
-              .info__date 25 августа
-              .info__place Москва | Сколково
             nav.nav
               ul.nav__list
                 a.nav__link(href="#howitwas") Как это было
@@ -43,7 +43,7 @@
               ) Купить Билеты
           .info
             .info__date 25 августа
-            .info__place Москва | Сколково
+            .info__place Москва | ИЦ Сколково
         .content
           .content__small
             | это непередаваемая
@@ -55,7 +55,7 @@
           .content__primary
             | место, где наука
             br
-            |  и музыка соединяются, —
+            |  и музыка соединяются,
             br
             |  превращаясь в магию
           .content-aside
@@ -141,7 +141,7 @@
                     .collage__block
                       .collage__text
                         .collage__text--primary 12
-                        .collage__text--default приглашенных артистов
+                        .collage__text--default артистов
                         .collage__text--secondary Российские и мировые имена
               .col.col-xs-6
                 .ratio
@@ -240,7 +240,7 @@
                     .collage__block
                       .collage__text
                         .collage__text--primary 10
-                        .collage__text--default приглашенных артистов
+                        .collage__text--default артистов
                         .collage__text--secondary Российские и мировые имена
               .col.col-xs-6
                 .ratio
@@ -291,15 +291,29 @@
                   .ratio__content
                     .collage__block
                       preview(:source="gallery.image_2017_11", @open="openGallery")
+        .call-to-action
+          a.button.button--primary(
+            target="_blank",
+            href="https://msk.kassir.ru/frame/event/104230?key=d68c4b88-00fb-ee51-8fdd-fec9d1c99539"
+          ) Купить Билеты
     section#artists.artists
       .container
-        h2.artists__heading.heading Приглашенные артисты
+        h2.artists__heading.heading Артисты
         Years(:currentYear="currentYear", :isContrast="true", @set="setYear")
         .row
           .col.col-xs-12.col-sm-6.col-lg-3(v-for="artist in content[currentYear].artists")
             .artists__block
-              img.artists__img(:src="artist.src", :alt="artist.name")
+              img.artists__img(
+                :src="artist.src",
+                :alt="artist.name",
+                :title="artist.alreadyPerformed ? 'Уже выступил' : null",
+                :class="{'artists__img--muted' : artist.alreadyPerformed}")
               .artists__name {{artist.name}}
+        .call-to-action
+          a.button.button--contrast(
+            target="_blank",
+            href="https://msk.kassir.ru/frame/event/104230?key=d68c4b88-00fb-ee51-8fdd-fec9d1c99539"
+          ) Купить Билеты
     section#program.program
       .container
         h2.heading Программа
@@ -338,6 +352,11 @@
               | головоломками. Для всех гостей на&nbsp;территории фестиваля были организованы
               | Книжная ярмарка и&nbsp;Винил-маркет, а&nbsp;также фестиваль фудтраков, дополненный
               | изысканным выездным рестораном от&nbsp;OsteriaMario.
+      .call-to-action
+        a.button.button--primary(
+          target="_blank",
+          href="https://msk.kassir.ru/frame/event/104230?key=d68c4b88-00fb-ee51-8fdd-fec9d1c99539"
+        ) Купить Билеты
     section#partners.partners
       .container
         h2.heading Партнеры
@@ -489,35 +508,36 @@ export default {
         year2017: {
           title: '2017',
           artists: [
-            { src: 'static/img/marimba.png', name: 'Маримба+' },
-            { src: 'static/img/scristian.png', name: 'Cristian Sans Trio' },
+            { src: 'static/img/marimba.png', name: 'Маримба+', alreadyPerformed: true },
+            { src: 'static/img/scristian.png', name: 'Christian Sands Trio', alreadyPerformed: true },
             { src: 'static/img/dummy-1.png', name: '' },
-            { src: 'static/img/musicaviva.png', name: 'Московский камерный оркестр Musicviva и Юрий Фаворин' },
+            { src: 'static/img/musicaviva.png', name: 'Московский камерный оркестр Musicviva и Юрий Фаворин', alreadyPerformed: true },
             { src: 'static/img/dummy-2.png', name: '' },
-            { src: 'static/img/butman.png', name: 'Московский джазовый оркестр под управлением Игоря Бутмана' },
-            { src: 'static/img/jukebox.png', name: 'Jukebox' },
-            { src: 'static/img/pii.png', name: 'Число Пи' },
-            { src: 'static/img/anton-g.png', name: 'Антон Маскелиаде' },
-            { src: 'static/img/azekel.png', name: 'Azekel' },
-            { src: 'static/img/jekka.png', name: 'Jekka' },
-            { src: 'static/img/blinder.png', name: 'Yana Blinder' },
+            { src: 'static/img/butman.png', name: 'Московский джазовый оркестр под управлением Игоря Бутмана', alreadyPerformed: true },
+            { src: 'static/img/jukebox.png', name: 'Jukebox', alreadyPerformed: true },
+            { src: 'static/img/pii.png', name: 'Число Пи', alreadyPerformed: true },
+            { src: 'static/img/anton-g.png', name: 'Антон Маскелиаде', alreadyPerformed: true },
+            { src: 'static/img/azekel.png', name: 'Azekel', alreadyPerformed: true },
+            { src: 'static/img/jekka.png', name: 'Jekka', alreadyPerformed: true },
+            { src: 'static/img/blinder.png', name: 'Yana Blinder', alreadyPerformed: true },
           ],
         },
         year2016: {
           title: '2016',
           artists: [
-            { src: 'static/img/ilya-i-azat.png', name: 'Группа Ильи Морозова и Азата Баязитова' },
-            { src: 'static/img/sergey-quintet.png', name: 'Квинтет Сергея Долженкова' },
-            { src: 'static/img/vsdims-group.png', name: 'Вадим Эйленкриг и его группа' },
-            { src: 'static/img/oleg-trio.png', name: 'Трио Олега Аккуратова' },
-            { src: 'static/img/till-quintet.png', name: 'Till Brönner Quintet' },
-            { src: 'static/img/igor-i-moscow-jazzband.png', name: 'Игорь Бутман и Московский джазовый оркестр' },
-            { src: 'static/img/july-afterjuly.png', name: 'July AfterJuly' },
-            { src: 'static/img/teslaboy.png', name: 'Группа TeslaBoy' },
-            { src: 'static/img/baronin-a.png', name: 'Антон Баронин' },
-            { src: 'static/img/toymintseva-a.png', name: 'Алена Тойминцева' },
-            { src: 'static/img/guru-groove.png', name: 'Guru Groove Foundation' },
-            { src: 'static/img/tony-momrelle-band.png', name: 'Tony Momrelle Band' }],
+            { src: 'static/img/ilya-i-azat.png', name: 'Группа Ильи Морозова и Азата Баязитова', alreadyPerformed: true },
+            { src: 'static/img/sergey-quintet.png', name: 'Квинтет Сергея Долженкова', alreadyPerformed: true },
+            { src: 'static/img/vsdims-group.png', name: 'Вадим Эйленкриг и его группа', alreadyPerformed: true },
+            { src: 'static/img/oleg-trio.png', name: 'Трио Олега Аккуратова', alreadyPerformed: true },
+            { src: 'static/img/till-quintet.png', name: 'Till Brönner Quintet', alreadyPerformed: true },
+            { src: 'static/img/igor-i-moscow-jazzband.png', name: 'Игорь Бутман и Московский джазовый оркестр', alreadyPerformed: true },
+            { src: 'static/img/july-afterjuly.png', name: 'July AfterJuly', alreadyPerformed: true },
+            { src: 'static/img/teslaboy.png', name: 'Группа TeslaBoy', alreadyPerformed: true },
+            { src: 'static/img/baronin-a.png', name: 'Антон Баронин', alreadyPerformed: true },
+            { src: 'static/img/toymintseva-a.png', name: 'Алена Тойминцева', alreadyPerformed: true },
+            { src: 'static/img/guru-groove.png', name: 'Guru Groove Foundation', alreadyPerformed: true },
+            { src: 'static/img/tony-momrelle-band.png', name: 'Tony Momrelle Band' , alreadyPerformed: true },
+          ],
         },
       },
     };
