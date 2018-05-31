@@ -269,7 +269,7 @@
                     .collage__block
                       .collage__text
                         .collage__text--primary 2
-                        .collage__text--default открытые дискусии
+                        .collage__text--default открытые дискуссии
                         .collage__text--secondary Известные ученые, журналисты и медийные персоны
           swiper-slide
             .row
@@ -291,11 +291,11 @@
                   .ratio__content
                     .collage__block
                       preview(:source="gallery.image_2017_11", @open="openGallery")
-        .call-to-action
-          a.button.button--primary(
-            target="_blank",
-            href="https://msk.kassir.ru/frame/event/104230?key=d68c4b88-00fb-ee51-8fdd-fec9d1c99539"
-          ) Купить Билеты
+      .call-to-action
+        a.button.button--primary(
+          target="_blank",
+          href="https://msk.kassir.ru/frame/event/104230?key=d68c4b88-00fb-ee51-8fdd-fec9d1c99539"
+        ) Купить Билеты
     section#artists.artists
       .container
         h2.artists__heading.heading Артисты
@@ -364,7 +364,9 @@
   .popup(v-if="isGalleryOpen")
     button.popup__close(@click.stop="closeGallery")
       svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 371.23 371.23")
-        path(d="M371.23 21.213L350.018 0 185.615 164.402 21.213 0 0 21.213l164.402 164.402L0 350.018l21.213 21.212 164.402-164.402L350.018 371.23l21.212-21.212-164.402-164.403z")
+        path(d=`M371.23 21.213L350.018 0 185.615 164.402 21.213 0 0 21.213l164.402
+        164.402L0 350.018l21.213 21.212
+        164.402-164.402L350.018 371.23l21.212-21.212-164.402-164.403z`)
     swiper(:options="galleryOptions" ref="gallerySwiper")
       template(v-for="slide in gallery")
         swiper-slide.popup__slide
@@ -390,13 +392,14 @@ export default {
         observer: true,
         observeParents: true,
         breakpoints: {
-          575: {
+
+          767: {
             slidesPerView: 1,
           },
-          767: {
+          1200: {
             slidesPerView: 2,
           },
-          1023: {
+          1600: {
             slidesPerView: 3,
           },
         },
@@ -536,7 +539,7 @@ export default {
             { src: 'static/img/baronin-a.png', name: 'Антон Баронин', alreadyPerformed: true },
             { src: 'static/img/toymintseva-a.png', name: 'Алена Тойминцева', alreadyPerformed: true },
             { src: 'static/img/guru-groove.png', name: 'Guru Groove Foundation', alreadyPerformed: true },
-            { src: 'static/img/tony-momrelle-band.png', name: 'Tony Momrelle Band' , alreadyPerformed: true },
+            { src: 'static/img/tony-momrelle-band.png', name: 'Tony Momrelle Band', alreadyPerformed: true },
           ],
         },
       },
