@@ -110,6 +110,7 @@
   flex-flow: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
 
   &__date {
     font-size: 20px;
@@ -118,6 +119,7 @@
   &__place {
     font-size: 12px;
     padding-top: 2px;
+    white-space: nowrap;
   }
 }
 
