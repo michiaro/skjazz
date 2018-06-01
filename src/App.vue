@@ -18,29 +18,12 @@
               span.hamburger-inner
         transition(name="slide")
           aside#left-menu.panel(v-if="isMobile && isMenuOpen", v-cloak="")
-            nav.nav
-              ul.nav__list
-                a.nav__link(href="#howitwas") Как это было
-                a.nav__link(href="#artists") Артисты
-                a.nav__link(href="#program") Программа
-                a.nav__link(href="#partners") Партнеры
-                a.nav__link.nav__link--contrast(
-                  target="_blank",
-                  href="https://msk.kassir.ru/frame/event/104230?key=d68c4b88-00fb-ee51-8fdd-fec9d1c99539"
-                ) Купить Билеты
+            navigation
         header.header(v-if="!isMobile", v-cloak="")
           a.logo(href="/")
             img.logo__img(src="static/img/logo.png")
-          nav.nav
-            ul.nav__list
-              a.nav__link(href="#howitwas") Как это было
-              a.nav__link(href="#artists") Артисты
-              a.nav__link(href="#program") Программа
-              a.nav__link(href="#partners") Партнеры
-              a.nav__link.nav__link--contrast(
-                target="_blank",
-                href="https://msk.kassir.ru/frame/event/104230?key=d68c4b88-00fb-ee51-8fdd-fec9d1c99539"
-              ) Купить Билеты
+          .header__nav
+            navigation
           .info
             .info__date 25 августа
             .info__place Москва | ИЦ Сколково
@@ -58,6 +41,11 @@
             |  и музыка соединяются,
             br
             |  превращаясь в магию
+          .content__mobile-buy-tickets
+            a.button.button--contrast(
+              target="_blank",
+              href="https://msk.kassir.ru/frame/event/104230?key=d68c4b88-00fb-ee51-8fdd-fec9d1c99539"
+            ) Купить билеты
           .content-aside
             .social
               a.social__link.social__link--insta(
@@ -76,9 +64,9 @@
       #js-molecule-4.molecule.molecule--4
       #js-molecule-5.molecule.molecule--5
       #js-molecule-6.molecule.molecule--6
-    section#howitwas.howitwas
+    section#howitwas.howitwas.section
       .container
-        h2.howitwas__heading.heading Как это было?
+        h2.section__heading Как это было?
         p
         .years
           button.years__item(
@@ -97,19 +85,19 @@
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
-                    .collage__block
+                    .collage__block.collage__block--link
                       preview(:source="gallery.image_2016_01", @open="openGallery")
               .col.col-xs-6
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
-                    .collage__block
+                    .collage__block.collage__block--link
                       preview(:source="gallery.image_2016_02", @open="openGallery")
               .col.col-xs-12
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
-                    .collage__block
+                    .collage__block.collage__block--link
                       preview(:source="gallery.image_2016_03", @open="openGallery")
           swiper-slide
             .row
@@ -117,7 +105,7 @@
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x4
                   .ratio__content
-                    .collage__block
+                    .collage__block.collage__block--link
                       preview(:source="gallery.image_2016_04", @open="openGallery")
               .col.col-xs-6
                 .ratio
@@ -131,7 +119,7 @@
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
-                    .collage__block
+                    .collage__block.collage__block--link
                       preview(:source="gallery.image_2016_05", @open="openGallery")
             .row
               .col.col-xs-6
@@ -147,7 +135,7 @@
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
-                    .collage__block
+                    .collage__block.collage__block--link
                       preview(:source="gallery.image_2016_06", @open="openGallery")
           swiper-slide
             .row
@@ -155,13 +143,13 @@
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
-                    .collage__block
+                    .collage__block.collage__block--link
                       preview(:source="gallery.image_2016_07", @open="openGallery")
               .col.col-xs-6
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
-                    .collage__block
+                    .collage__block.collage__block--link
                       preview(:source="gallery.image_2016_08", @open="openGallery")
               .col.col-xs-6
                 .ratio
@@ -176,19 +164,19 @@
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
-                    .collage__block
+                    .collage__block.collage__block--link
                       preview(:source="gallery.image_2016_09", @open="openGallery")
               .col.col-xs-6
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
-                    .collage__block
+                    .collage__block.collage__block--link
                       preview(:source="gallery.image_2016_10", @open="openGallery")
               .col.col-xs-12
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
-                    .collage__block
+                    .collage__block.collage__block--link
                       preview(:source="gallery.image_2016_11", @open="openGallery")
           swiper-slide
             .row
@@ -196,19 +184,19 @@
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
-                    .collage__block
+                    .collage__block.collage__block--link
                       preview(:source="gallery.image_2017_01", @open="openGallery")
               .col.col-xs-6
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
-                    .collage__block
+                    .collage__block.collage__block--link
                       preview(:source="gallery.image_2017_02", @open="openGallery")
               .col.col-xs-12
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
-                    .collage__block
+                    .collage__block.collage__block--link
                       preview(:source="gallery.image_2017_03", @open="openGallery")
           swiper-slide
             .row
@@ -216,7 +204,7 @@
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x4
                   .ratio__content
-                    .collage__block
+                    .collage__block.collage__block--link
                       preview(:source="gallery.image_2017_04", @open="openGallery")
               .col.col-xs-6
                 .ratio
@@ -230,7 +218,7 @@
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
-                    .collage__block
+                    .collage__block.collage__block--link
                       preview(:source="gallery.image_2017_05", @open="openGallery")
             .row
               .col.col-xs-6
@@ -246,7 +234,7 @@
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
-                    .collage__block
+                    .collage__block.collage__block--link
                       preview(:source="gallery.image_2017_06", @open="openGallery")
           swiper-slide
             .row
@@ -254,13 +242,13 @@
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
-                    .collage__block
+                    .collage__block.collage__block--link
                       preview(:source="gallery.image_2017_07", @open="openGallery")
               .col.col-xs-6
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
-                    .collage__block
+                    .collage__block.collage__block--link
                       preview(:source="gallery.image_2017_08", @open="openGallery")
               .col.col-xs-6
                 .ratio
@@ -277,28 +265,28 @@
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
-                    .collage__block
+                    .collage__block.collage__block--link
                       preview(:source="gallery.image_2017_09", @open="openGallery")
               .col.col-xs-6
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
-                    .collage__block
+                    .collage__block.collage__block--link
                       preview(:source="gallery.image_2017_10", @open="openGallery")
               .col.col-xs-12
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
-                    .collage__block
+                    .collage__block.collage__block--link
                       preview(:source="gallery.image_2017_11", @open="openGallery")
       .call-to-action
         a.button.button--primary(
           target="_blank",
           href="https://msk.kassir.ru/frame/event/104230?key=d68c4b88-00fb-ee51-8fdd-fec9d1c99539"
         ) Купить Билеты
-    section#artists.artists
+    section#artists.artists.section.section--contrast
       .container
-        h2.artists__heading.heading Артисты
+        h2.section__heading Артисты
         Years(:currentYear="currentYear", :isContrast="true", @set="setYear")
         .row
           .col.col-xs-12.col-sm-6.col-lg-3(v-for="artist in content[currentYear].artists")
@@ -314,9 +302,9 @@
             target="_blank",
             href="https://msk.kassir.ru/frame/event/104230?key=d68c4b88-00fb-ee51-8fdd-fec9d1c99539"
           ) Купить Билеты
-    section#program.program
+    section#program.program.section
       .container
-        h2.heading Программа
+        h2.section__heading Программа
         Years(:currentYear="currentYear", @set="setYear")
         .program__content(v-if="currentYear === 'year2016'")
           img.program__img(src="static/img/program-2016.png", alt="Программа фестиваля 2016")
@@ -357,10 +345,21 @@
           target="_blank",
           href="https://msk.kassir.ru/frame/event/104230?key=d68c4b88-00fb-ee51-8fdd-fec9d1c99539"
         ) Купить Билеты
-    section#partners.partners
+    section#partners.partners.section
       .container
-        h2.heading Партнеры
+        h2.section__heading Партнеры
         img(src="static/img/partners.png", alt="Партнеры", class="preview")
+    section#coordinates.coordinates.section
+      .container
+        h2.section__heading Как добраться
+        p В течение всего дня будут курсировать бесплатные шатлы от
+          | станции метро Парк Победы до места проведения фестиваля
+    section#contact.contact.section
+      .container
+        h2.section__heading Контакты
+        p По вопросам сотрудничества:&nbsp;
+          a(href="mailto:info@skjazz.ru") info@skjazz.ru
+
   .popup(v-if="isGalleryOpen")
     button.popup__close(@click.stop="closeGallery")
       svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 371.23 371.23")
@@ -370,7 +369,17 @@
     swiper(:options="galleryOptions" ref="gallerySwiper")
       template(v-for="slide in gallery")
         swiper-slide.popup__slide
-          img(:src="slide.full").popup__image
+          iframe(
+            v-if="slide.videoId",
+            :src="'https://www.youtube.com/embed/'+slide.videoId+'?rel=0&amp;controls=0&amp;showinfo=0'",
+            frameborder="0",
+            allow="autoplay; encrypted-media",
+            allowfullscreen
+          ).popup__video
+          img(
+            v-else,
+            :src="slide.full"
+          ).popup__image
       .swiper-pagination.swiper-pagination-white(slot="pagination")
       .swiper-button-prev.swiper-button-white(slot="button-prev")
       .swiper-button-next.swiper-button-white(slot="button-next")
@@ -378,8 +387,13 @@
 
 <script>
 /* eslint-disable no-console, no-plusplus */
+import Navigation from '@/components/Navigation';
+
 export default {
   name: 'App',
+  components: {
+    Navigation,
+  },
   data() {
     return {
       isMenuOpen: false,
@@ -431,8 +445,9 @@ export default {
           full: 'static/img/2016/6.jpg',
         },
         image_2016_07: {
-          thumb: 'static/img/2016-7.jpg',
+          thumb: 'static/img/video-2016.gif',
           full: 'static/img/2016/7.jpg',
+          videoId: '7AEgOSzbBDY',
         },
         image_2016_08: {
           thumb: 'static/img/2016-8.jpg',
@@ -475,8 +490,9 @@ export default {
           full: 'static/img/2017/6.jpg',
         },
         image_2017_07: {
-          thumb: 'static/img/2017-7.png',
+          thumb: 'static/img/video-2017.gif',
           full: 'static/img/2017/7.jpg',
+          videoId: 'aMwDBSLd2d8',
         },
         image_2017_08: {
           thumb: 'static/img/2017-8.png',

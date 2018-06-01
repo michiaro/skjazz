@@ -1,9 +1,7 @@
 @import "hamburgers/hamburgers";
 @import "grid";
 @import "ratio";
-
-$color--primary: #038ed2;
-$color--contrast: #ffde00;
+@import "colors";
 
 [v-cloak] {
   display: none;
@@ -87,7 +85,13 @@ $color--contrast: #ffde00;
 .header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-top: 10px;
+
+  &__nav {
+    flex-grow: 1;
+    margin: 0 24px;
+  }
 }
 
 .logo {
@@ -97,39 +101,6 @@ $color--contrast: #ffde00;
 
 .logo__img {
   width: 120px;
-}
-
-.nav__list {
-  display: flex;
-  flex-flow: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0;
-}
-
-.nav__link {
-  padding: 10px 25px;
-  color: white;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: 16px;
-  margin: 16px 5px;
-  font-weight: bold;
-  text-align: center;
-
-  &:hover {
-    background: $color--contrast;
-    color: $color--primary;
-  }
-
-  &--contrast {
-    background: $color--contrast;
-    color: $color--primary;
-
-    &:hover {
-      background: white;
-    }
-  }
 }
 
 .info {
@@ -212,18 +183,13 @@ $color--contrast: #ffde00;
   justify-content: space-around;
 }
 
-@media screen and (min-width: 1200px) {
-  .nav__list {
-    flex-flow: row;
-  }
-}
 .call-to-action {
   display: flex;
   justify-content: center;
-  padding: 20px 0;
 }
 
 .button {
+  display: inline-block;
   padding: 10px 25px;
   text-decoration: none;
   text-transform: uppercase;
@@ -292,6 +258,16 @@ $color--contrast: #ffde00;
     position: absolute;
     left: 0;
     top: 0;
+  }
+}
+
+.content__mobile-buy-tickets {
+  margin-top: 16px;
+  text-align: center;
+  width: 100%;
+
+  @media screen and (min-width: 1200px) {
+    display: none;
   }
 }
 
@@ -540,11 +516,28 @@ $color--contrast: #ffde00;
   }
 }
 
-.heading {
-  font-weight: bold;
-  font-size: 46px;
-  padding-top: 50px;
-  text-align: center;
+.section {
+  padding: 60px 0;
+
+  a:not(.button) {
+    color: $color--primary;
+  }
+
+  &__heading {
+    font-weight: bold;
+    font-size: 46px;
+    margin-top: 0;
+    text-align: center;
+  }
+
+  &--contrast {
+    background-color: #038ed2;
+    color: white;
+
+    a:not(.button) {
+      color: white;
+    }
+  }
 }
 
 .collage {
@@ -554,6 +547,10 @@ $color--contrast: #ffde00;
 .collage__block {
   padding: 3px;
   height: calc(100% - 6px);
+
+  &--link {
+    cursor: pointer;
+  }
 }
 
 .collage__text {
@@ -683,4 +680,17 @@ $color--contrast: #ffde00;
       fill: white;
     }
   }
+  &__video {
+    width: 100%;
+    height: 100%;
+    max-width: 1400px;
+  }
+}
+
+.contact {
+  text-align: center;
+}
+
+.coordinates {
+  text-align: center;
 }
