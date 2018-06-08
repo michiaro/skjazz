@@ -292,7 +292,7 @@
           .col.col-xs-12.col-sm-6.col-lg-3(v-for="artist in content[currentYear].artists")
             .artists__block
               img.artists__img(
-                :src="artist.src",
+                :src="artist.photo.path",
                 :alt="artist.name",
                 :title="artist.alreadyPerformed ? 'Уже выступил' : null",
                 :class="{'artists__img--muted' : artist.alreadyPerformed}")
@@ -307,16 +307,11 @@
         h2.section__heading Программа
         Years(:currentYear="currentYear", @set="setYear")
         .program__content(v-if="currentYear === 'year2016'")
-          img.program__img(src="static/img/program-2016.png", alt="Программа фестиваля 2016")
-          .program__text
-            p Помимо музыкальной программы, на&nbsp;фестивале можно было посетить научно-популярные лекции, принять участие в&nbsp;мастер-классах от&nbsp;Культурного Центра ЗИЛ и&nbsp;Playtronica, а&nbsp;также интерактивных инсталляциях от&nbsp;Петра Айду, Vtol: (проект Дмитрия Морозова) и&nbsp;Музея Скрябина. Для меломанов и&nbsp;любопытствующих работал Маркет винила, где можно было приобрести или обменять редкие пластинки. Также в&nbsp;рамках SkolkovoJazz прошел Фестиваль фудтраков, который объединил самые любимые и&nbsp;известные проекты московского стрит-фуда.
-            p Для самых маленьких гостей была организована программа от&nbsp;семейного кафе &laquo;Андерсон&raquo; и&nbsp;&laquo;SHUSHA-TOYS&raquo;
+          img.program__img(:src="content.year2016.programm.photo.path", alt="Программа фестиваля 2016")
+          .program__text(v-html="content.year2016.programm.content")
         .program__content(v-if="currentYear === 'year2017'")
-          img.program__img(src="static/img/program-2017.png", alt="Программа фестиваля 2017")
-          .program__text
-            p В рамках программы 2017 года на&nbsp;обеих сценах чередовались выступления музыкальных коллективов и&nbsp;паблик-токов с&nbsp;участием признанных деятелей науки, медиа и&nbsp;журналистики, таких как Татьяна Черниговская, Александр Архангельский, Владимир Раевский и&nbsp;Сергей Паранько.
-            p Научная программа была посвящена теме симбиоза науки о&nbsp;человеческом восприятии и&nbsp;различных видов искусства. В&nbsp;коллаборации с&nbsp;фестивалем науки &laquo;WOW!HOW?&raquo;, Занимательным Музеем наук &laquo;Эксперементаниум&raquo; и&nbsp;Планетарием были созданы интерактивные зоны и&nbsp;арт-объекты, визуализирующие идею синергии музыки и&nbsp;науки.
-            p Юные посетители фестиваля приняли участие в&nbsp;специальных активностях, разработанных для детей нашими партнерами &laquo;Лигой роботов&raquo; и&nbsp;Гигантскими головоломками. Для всех гостей на&nbsp;территории фестиваля были организованы Книжная ярмарка и&nbsp;Винил-маркет, а&nbsp;также фестиваль фудтраков, дополненный изысканным выездным рестораном от&nbsp;OsteriaMario.
+          img.program__img(:src="content.year2017.programm.photo.path", alt="Программа фестиваля 2017")
+          .program__text(v-html="content.year2017.programm.content")
         .program__content(v-if="currentYear === 'year2018'")
           //- img.program__img(src="static/img/program-2018.png", alt="Программа фестиваля 2018")
           .program__text
@@ -367,6 +362,7 @@
 <script>
 /* eslint-disable no-console, no-plusplus */
 import Navigation from '@/components/Navigation';
+import api from '@/api/';
 
 export default {
   name: 'App',
@@ -505,54 +501,17 @@ export default {
       content: {
         year2018: {
           title: '2018',
-          artists: [
-            { src: 'static/img/dummy-1.png', name: 'Трио Даниила Никитина' },
-            { src: 'static/img/dummy-1.png', name: 'Тина Кузнецова' },
-            { src: 'static/img/dummy-1.png', name: 'Игорь Бутман и московский джазовый оркестр' },
-            { src: 'static/img/dummy-1.png', name: 'Fantine' },
-            { src: 'static/img/dummy-1.png', name: '' },
-            { src: 'static/img/dummy-2.png', name: '' },
-            { src: 'static/img/dummy-1.png', name: '' },
-            { src: 'static/img/dummy-2.png', name: '' },
-            { src: 'static/img/dummy-2.png', name: '' },
-            { src: 'static/img/dummy-1.png', name: '' },
-            { src: 'static/img/dummy-2.png', name: '' },
-            { src: 'static/img/dummy-1.png', name: '' },
-          ],
+          artists: [],
         },
         year2017: {
           title: '2017',
-          artists: [
-            { src: 'static/img/butman.png', name: 'Московский джазовый оркестр под управлением Игоря Бутмана', alreadyPerformed: true },
-            { src: 'static/img/scristian.png', name: 'Christian Sands Trio', alreadyPerformed: true },
-            { src: 'static/img/azekel.png', name: 'Azekel', alreadyPerformed: true },
-            { src: 'static/img/musicaviva.png', name: 'Московский камерный оркестр Musicviva и Юрий Фаворин', alreadyPerformed: true },
-            { src: 'static/img/anton-g.png', name: 'Антон Маскелиаде', alreadyPerformed: true },
-            { src: 'static/img/marimba.png', name: 'Маримба+', alreadyPerformed: true },
-            { src: 'static/img/jukebox.png', name: 'Jukebox', alreadyPerformed: true },
-            { src: 'static/img/pii.png', name: 'Число Пи', alreadyPerformed: true },
-            { src: 'static/img/dummy-1.png', name: '' },
-            { src: 'static/img/blinder.png', name: 'Yana Blinder', alreadyPerformed: true },
-            { src: 'static/img/jekka.png', name: 'Jekka', alreadyPerformed: true },
-            { src: 'static/img/dummy-2.png', name: '' },
-          ],
+          artists: [],
+          programm: {},
         },
         year2016: {
           title: '2016',
-          artists: [
-            { src: 'static/img/ilya-i-azat.png', name: 'Группа Ильи Морозова и Азата Баязитова', alreadyPerformed: true },
-            { src: 'static/img/sergey-quintet.png', name: 'Квинтет Сергея Долженкова', alreadyPerformed: true },
-            { src: 'static/img/vsdims-group.png', name: 'Вадим Эйленкриг и его группа', alreadyPerformed: true },
-            { src: 'static/img/oleg-trio.png', name: 'Трио Олега Аккуратова', alreadyPerformed: true },
-            { src: 'static/img/till-quintet.png', name: 'Till Brönner Quintet', alreadyPerformed: true },
-            { src: 'static/img/igor-i-moscow-jazzband.png', name: 'Игорь Бутман и Московский джазовый оркестр', alreadyPerformed: true },
-            { src: 'static/img/july-afterjuly.png', name: 'July AfterJuly', alreadyPerformed: true },
-            { src: 'static/img/teslaboy.png', name: 'Группа TeslaBoy', alreadyPerformed: true },
-            { src: 'static/img/baronin-a.png', name: 'Антон Баронин', alreadyPerformed: true },
-            { src: 'static/img/toymintseva-a.png', name: 'Алена Тойминцева', alreadyPerformed: true },
-            { src: 'static/img/guru-groove.png', name: 'Guru Groove Foundation', alreadyPerformed: true },
-            { src: 'static/img/tony-momrelle-band.png', name: 'Tony Momrelle Band', alreadyPerformed: true },
-          ],
+          artists: [],
+          programm: {},
         },
       },
     };
@@ -569,6 +528,26 @@ export default {
     this.$nextTick(() => {
       window.addEventListener('resize', this.handleResize);
       this.handleResize();
+
+      api.getCollectionByKey('artists2016').then((artists) => {
+        this.content.year2016.artists = artists;
+      });
+
+      api.getCollectionByKey('artists2017').then((artists) => {
+        this.content.year2017.artists = artists;
+      });
+
+      api.getCollectionByKey('artists2018').then((artists) => {
+        this.content.year2018.artists = artists;
+      });
+
+      api.getRegionByKey('programm2016').then((programm) => {
+        this.content.year2016.programm = programm;
+      });
+
+      api.getRegionByKey('programm2017').then((programm) => {
+        this.content.year2017.programm = programm;
+      });
 
       this.swiper.on('slideChangeTransitionEnd', () => {
         this.activeIndex = this.swiper.activeIndex;
