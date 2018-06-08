@@ -12,6 +12,12 @@
         'years__item--active': currentYear === 'year2017',
         'years__item--contrast': isContrast
       }`) 2017
+    button.years__item(
+      @click="$emit('set','year2018')",
+      :class=`{
+        'years__item--active': currentYear === 'year2018',
+        'years__item--contrast': isContrast
+      }`) 2018
 </template>
 
 <script>

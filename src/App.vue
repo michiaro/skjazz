@@ -8,7 +8,7 @@
             img.mobile-logo__img(src="static/img/logo.png")
           .info
             .info__date 25 августа
-            .info__place Москва | Сколково
+            .info__place Москва | ИЦ Сколково
           button.hamburger.hamburger--emphatic(
             :class="{'is-active' : isMenuOpen}",
             type="button",
@@ -79,105 +79,6 @@
             ) 2017
       .collage
         swiper(:options="newsfeedOption" ref="newsfeedSwiper")
-          swiper-slide
-            .row
-              .col.col-xs-6
-                .ratio
-                  .ratio__expander.ratio__expander--xs-3x2
-                  .ratio__content
-                    .collage__block.collage__block--link
-                      preview(:source="gallery.image_2016_01", @open="openGallery")
-              .col.col-xs-6
-                .ratio
-                  .ratio__expander.ratio__expander--xs-3x2
-                  .ratio__content
-                    .collage__block.collage__block--link
-                      preview(:source="gallery.image_2016_02", @open="openGallery")
-              .col.col-xs-12
-                .ratio
-                  .ratio__expander.ratio__expander--xs-3x2
-                  .ratio__content
-                    .collage__block.collage__block--link
-                      preview(:source="gallery.image_2016_03", @open="openGallery")
-          swiper-slide
-            .row
-              .col.col-xs-6
-                .ratio
-                  .ratio__expander.ratio__expander--xs-3x4
-                  .ratio__content
-                    .collage__block.collage__block--link
-                      preview(:source="gallery.image_2016_04", @open="openGallery")
-              .col.col-xs-6
-                .ratio
-                  .ratio__expander.ratio__expander--xs-3x2
-                  .ratio__content
-                    .collage__block
-                      .collage__text
-                        .collage__text--primary 2016
-                        .collage__text--default год
-                        .collage__text--secondary Состоялся впервые
-                .ratio
-                  .ratio__expander.ratio__expander--xs-3x2
-                  .ratio__content
-                    .collage__block.collage__block--link
-                      preview(:source="gallery.image_2016_05", @open="openGallery")
-            .row
-              .col.col-xs-6
-                .ratio
-                  .ratio__expander.ratio__expander--xs-3x2
-                  .ratio__content
-                    .collage__block
-                      .collage__text
-                        .collage__text--primary 12
-                        .collage__text--default артистов
-                        .collage__text--secondary Российские и мировые имена
-              .col.col-xs-6
-                .ratio
-                  .ratio__expander.ratio__expander--xs-3x2
-                  .ratio__content
-                    .collage__block.collage__block--link
-                      preview(:source="gallery.image_2016_06", @open="openGallery")
-          swiper-slide
-            .row
-              .col.col-xs-12
-                .ratio
-                  .ratio__expander.ratio__expander--xs-3x2
-                  .ratio__content
-                    .collage__block.collage__block--link
-                      preview(:source="gallery.image_2016_07", @open="openGallery")
-              .col.col-xs-6
-                .ratio
-                  .ratio__expander.ratio__expander--xs-3x2
-                  .ratio__content
-                    .collage__block.collage__block--link
-                      preview(:source="gallery.image_2016_08", @open="openGallery")
-              .col.col-xs-6
-                .ratio
-                  .ratio__expander.ratio__expander--xs-3x2
-                  .ratio__content
-                    .collage__block
-                      .collage__text
-                        .collage__text--default Лучшее джазовое событие года
-          swiper-slide
-            .row
-              .col.col-xs-6
-                .ratio
-                  .ratio__expander.ratio__expander--xs-3x2
-                  .ratio__content
-                    .collage__block.collage__block--link
-                      preview(:source="gallery.image_2016_09", @open="openGallery")
-              .col.col-xs-6
-                .ratio
-                  .ratio__expander.ratio__expander--xs-3x2
-                  .ratio__content
-                    .collage__block.collage__block--link
-                      preview(:source="gallery.image_2016_10", @open="openGallery")
-              .col.col-xs-12
-                .ratio
-                  .ratio__expander.ratio__expander--xs-3x2
-                  .ratio__content
-                    .collage__block.collage__block--link
-                      preview(:source="gallery.image_2016_11", @open="openGallery")
           swiper-slide
             .row
               .col.col-xs-6
@@ -279,6 +180,105 @@
                   .ratio__content
                     .collage__block.collage__block--link
                       preview(:source="gallery.image_2017_11", @open="openGallery")
+          swiper-slide
+            .row
+              .col.col-xs-6
+                .ratio
+                  .ratio__expander.ratio__expander--xs-3x2
+                  .ratio__content
+                    .collage__block.collage__block--link
+                      preview(:source="gallery.image_2016_01", @open="openGallery")
+              .col.col-xs-6
+                .ratio
+                  .ratio__expander.ratio__expander--xs-3x2
+                  .ratio__content
+                    .collage__block.collage__block--link
+                      preview(:source="gallery.image_2016_02", @open="openGallery")
+              .col.col-xs-12
+                .ratio
+                  .ratio__expander.ratio__expander--xs-3x2
+                  .ratio__content
+                    .collage__block.collage__block--link
+                      preview(:source="gallery.image_2016_03", @open="openGallery")
+          swiper-slide
+            .row
+              .col.col-xs-6
+                .ratio
+                  .ratio__expander.ratio__expander--xs-3x4
+                  .ratio__content
+                    .collage__block.collage__block--link
+                      preview(:source="gallery.image_2016_04", @open="openGallery")
+              .col.col-xs-6
+                .ratio
+                  .ratio__expander.ratio__expander--xs-3x2
+                  .ratio__content
+                    .collage__block
+                      .collage__text
+                        .collage__text--primary 2016
+                        .collage__text--default год
+                        .collage__text--secondary Состоялся впервые
+                .ratio
+                  .ratio__expander.ratio__expander--xs-3x2
+                  .ratio__content
+                    .collage__block.collage__block--link
+                      preview(:source="gallery.image_2016_05", @open="openGallery")
+            .row
+              .col.col-xs-6
+                .ratio
+                  .ratio__expander.ratio__expander--xs-3x2
+                  .ratio__content
+                    .collage__block
+                      .collage__text
+                        .collage__text--primary 12
+                        .collage__text--default артистов
+                        .collage__text--secondary Российские и мировые имена
+              .col.col-xs-6
+                .ratio
+                  .ratio__expander.ratio__expander--xs-3x2
+                  .ratio__content
+                    .collage__block.collage__block--link
+                      preview(:source="gallery.image_2016_06", @open="openGallery")
+          swiper-slide
+            .row
+              .col.col-xs-12
+                .ratio
+                  .ratio__expander.ratio__expander--xs-3x2
+                  .ratio__content
+                    .collage__block.collage__block--link
+                      preview(:source="gallery.image_2016_07", @open="openGallery")
+              .col.col-xs-6
+                .ratio
+                  .ratio__expander.ratio__expander--xs-3x2
+                  .ratio__content
+                    .collage__block.collage__block--link
+                      preview(:source="gallery.image_2016_08", @open="openGallery")
+              .col.col-xs-6
+                .ratio
+                  .ratio__expander.ratio__expander--xs-3x2
+                  .ratio__content
+                    .collage__block
+                      .collage__text
+                        .collage__text--default Лучшее джазовое событие года
+          swiper-slide
+            .row
+              .col.col-xs-6
+                .ratio
+                  .ratio__expander.ratio__expander--xs-3x2
+                  .ratio__content
+                    .collage__block.collage__block--link
+                      preview(:source="gallery.image_2016_09", @open="openGallery")
+              .col.col-xs-6
+                .ratio
+                  .ratio__expander.ratio__expander--xs-3x2
+                  .ratio__content
+                    .collage__block.collage__block--link
+                      preview(:source="gallery.image_2016_10", @open="openGallery")
+              .col.col-xs-12
+                .ratio
+                  .ratio__expander.ratio__expander--xs-3x2
+                  .ratio__content
+                    .collage__block.collage__block--link
+                      preview(:source="gallery.image_2016_11", @open="openGallery")
       .call-to-action
         a.button.button--primary(
           target="_blank",
@@ -317,6 +317,10 @@
             p В рамках программы 2017 года на&nbsp;обеих сценах чередовались выступления музыкальных коллективов и&nbsp;паблик-токов с&nbsp;участием признанных деятелей науки, медиа и&nbsp;журналистики, таких как Татьяна Черниговская, Александр Архангельский, Владимир Раевский и&nbsp;Сергей Паранько.
             p Научная программа была посвящена теме симбиоза науки о&nbsp;человеческом восприятии и&nbsp;различных видов искусства. В&nbsp;коллаборации с&nbsp;фестивалем науки &laquo;WOW!HOW?&raquo;, Занимательным Музеем наук &laquo;Эксперементаниум&raquo; и&nbsp;Планетарием были созданы интерактивные зоны и&nbsp;арт-объекты, визуализирующие идею синергии музыки и&nbsp;науки.
             p Юные посетители фестиваля приняли участие в&nbsp;специальных активностях, разработанных для детей нашими партнерами &laquo;Лигой роботов&raquo; и&nbsp;Гигантскими головоломками. Для всех гостей на&nbsp;территории фестиваля были организованы Книжная ярмарка и&nbsp;Винил-маркет, а&nbsp;также фестиваль фудтраков, дополненный изысканным выездным рестораном от&nbsp;OsteriaMario.
+        .program__content(v-if="currentYear === 'year2018'")
+          img.program__img(src="static/img/program-2018.png", alt="Программа фестиваля 2018")
+          .program__text
+            p Текст программы 2018, прогнанный через типограф лебедева.
       .call-to-action
         a.button.button--primary(
           target="_blank",
@@ -498,23 +502,40 @@ export default {
         },
         initialSlide: 0,
       },
-      currentYear: 'year2016',
+      currentYear: 'year2018',
       content: {
+        year2018: {
+          title: '2018',
+          artists: [
+            { src: 'static/img/dummy-1.png', name: 'Трио Даниила Никитина' },
+            { src: 'static/img/dummy-1.png', name: 'Тина Кузнецова' },
+            { src: 'static/img/dummy-1.png', name: 'Игорь Бутман и московский джазовый оркестр' },
+            { src: 'static/img/dummy-1.png', name: 'Fantine' },
+            { src: 'static/img/dummy-1.png', name: '' },
+            { src: 'static/img/dummy-2.png', name: '' },
+            { src: 'static/img/dummy-1.png', name: '' },
+            { src: 'static/img/dummy-2.png', name: '' },
+            { src: 'static/img/dummy-2.png', name: '' },
+            { src: 'static/img/dummy-1.png', name: '' },
+            { src: 'static/img/dummy-2.png', name: '' },
+            { src: 'static/img/dummy-1.png', name: '' },
+          ],
+        },
         year2017: {
           title: '2017',
           artists: [
-            { src: 'static/img/marimba.png', name: 'Маримба+', alreadyPerformed: true },
-            { src: 'static/img/scristian.png', name: 'Christian Sands Trio', alreadyPerformed: true },
-            { src: 'static/img/dummy-1.png', name: '' },
-            { src: 'static/img/musicaviva.png', name: 'Московский камерный оркестр Musicviva и Юрий Фаворин', alreadyPerformed: true },
-            { src: 'static/img/dummy-2.png', name: '' },
             { src: 'static/img/butman.png', name: 'Московский джазовый оркестр под управлением Игоря Бутмана', alreadyPerformed: true },
+            { src: 'static/img/scristian.png', name: 'Christian Sands Trio', alreadyPerformed: true },
+            { src: 'static/img/azekel.png', name: 'Azekel', alreadyPerformed: true },
+            { src: 'static/img/musicaviva.png', name: 'Московский камерный оркестр Musicviva и Юрий Фаворин', alreadyPerformed: true },
+            { src: 'static/img/anton-g.png', name: 'Антон Маскелиаде', alreadyPerformed: true },
+            { src: 'static/img/marimba.png', name: 'Маримба+', alreadyPerformed: true },
             { src: 'static/img/jukebox.png', name: 'Jukebox', alreadyPerformed: true },
             { src: 'static/img/pii.png', name: 'Число Пи', alreadyPerformed: true },
-            { src: 'static/img/anton-g.png', name: 'Антон Маскелиаде', alreadyPerformed: true },
-            { src: 'static/img/azekel.png', name: 'Azekel', alreadyPerformed: true },
-            { src: 'static/img/jekka.png', name: 'Jekka', alreadyPerformed: true },
+            { src: 'static/img/dummy-1.png', name: '' },
             { src: 'static/img/blinder.png', name: 'Yana Blinder', alreadyPerformed: true },
+            { src: 'static/img/jekka.png', name: 'Jekka', alreadyPerformed: true },
+            { src: 'static/img/dummy-2.png', name: '' },
           ],
         },
         year2016: {
