@@ -8,7 +8,15 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/cockpit': {
+        target: 'http://skjazz.ru/',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/cockpit': '/cockpit',
+        },
+      },
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
