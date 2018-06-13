@@ -327,11 +327,7 @@
     section#rules.section.section--contrast
       .container
         h2.section__heading Правила фестиваля
-        .rules
-          p 1. Убедительно просим Вас распечатать билет заблаговременно.
-          p 2. Запрещается проносить крупногабаритный багаж, воспламеняющиеся и пиротехнические предметы, напитки в стекле (за исключением детского питания), а также колющие и режущие предметы. Также не разрешается вход на территорию фестиваля с домашними животными и использование дронов и квадрокоптеров (летательные аппараты с камерой).
-          p 3. Дети в возрасте до 7 лет(включительно) имеют право бесплатного прохода на фестиваль. Дети в возрасте от 8 лет (включительно) необходимо приобрести билет "Стандарт"
-          p 4. Наличие "VIP" билета предоставляет право прохода в VIP-зону
+        .rules(v-html="content.rules.content")
     section#coordinates.coordinates.section
       .container
         h2.section__heading Как добраться
@@ -341,7 +337,6 @@
         h2.section__heading Контакты
         p По вопросам сотрудничества:&nbsp;
           a(href="mailto:info@skjazz.ru") info@skjazz.ru
-
   .popup(v-if="isGalleryOpen")
     button.popup__close(@click.stop="closeGallery")
       svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 371.23 371.23")
@@ -521,6 +516,7 @@ export default {
           artists: [],
           programm: {},
         },
+        rules: '',
       },
     };
   },
@@ -555,6 +551,10 @@ export default {
 
       api.getRegionByKey('programm2017').then((programm) => {
         this.content.year2017.programm = programm;
+      });
+
+      api.getRegionByKey('rules').then((rules) => {
+        this.content.rules = rules;
       });
 
       this.swiper.on('slideChangeTransitionEnd', () => {
@@ -619,7 +619,7 @@ export default {
       this.isMenuOpen = false;
     },
     random() {
-      return Math.floor(Math.random() * 4) + 1;
+      return Math.floor(Math.random() * 3) + 1;
     },
     setYear(year) {
       this.currentYear = year;
