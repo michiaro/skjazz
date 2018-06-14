@@ -312,9 +312,15 @@
         .program__content(v-if="currentYear === 'year2017'")
           img.program__img(:src="content.year2017.programm.photo.path", alt="Программа фестиваля 2017")
           .program__text(v-html="content.year2017.programm.content")
-        .program__content(v-if="currentYear === 'year2018'")
-          //- img.program__img(src="static/img/program-2018.png", alt="Программа фестиваля 2018")
-          .program__text
+        .program__content.program__content--slider(v-if="currentYear === 'year2018'")
+          swiper(:options="programmSliderOptions" ref="programmSwiper")
+            template(v-for="section in content.year2018.programm")
+              swiper-slide.program__section
+                .program__section-photo(:style="{'backgroundImage': 'url('+section.photo.path+')'}")
+                .program__section-description
+                  h2 {{section.title}}
+                  div(v-html="section.content")
+            .swiper-pagination.swiper-pagination-white.js-programm-pagination(slot="pagination")
       .call-to-action
         a.button.button--primary(
           target="_blank",
@@ -357,9 +363,9 @@
             v-else,
             :src="slide.full"
           ).popup__image
-      .swiper-pagination.swiper-pagination-white(slot="pagination")
-      .swiper-button-prev.swiper-button-white(slot="button-prev")
-      .swiper-button-next.swiper-button-white(slot="button-next")
+      .swiper-pagination.swiper-pagination-white.js-gallery-pagination(slot="pagination")
+      .swiper-button-prev.swiper-button-white.js-gallery-next(slot="button-prev")
+      .swiper-button-next.swiper-button-white.js-gallery-prev(slot="button-next")
 </template>
 
 <script>
@@ -384,7 +390,6 @@ export default {
         observer: true,
         observeParents: true,
         breakpoints: {
-
           767: {
             slidesPerView: 1,
           },
@@ -492,11 +497,11 @@ export default {
       isGalleryOpen: false,
       galleryOptions: {
         pagination: {
-          el: '.swiper-pagination',
+          el: '.js-gallery-pagination',
         },
         navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
+          nextEl: '.js-gallery-next',
+          prevEl: '.js-gallery-prev',
         },
         initialSlide: 0,
       },
@@ -505,6 +510,7 @@ export default {
         year2018: {
           title: '2018',
           artists: [],
+          programm: [],
         },
         year2017: {
           title: '2017',
@@ -517,6 +523,11 @@ export default {
           programm: {},
         },
         rules: '',
+      },
+      programmSliderOptions: {
+        pagination: {
+          el: '.js-programm-pagination',
+        },
       },
     };
   },
@@ -543,6 +554,10 @@ export default {
 
       api.getCollectionByKey('artists2018').then((artists) => {
         this.content.year2018.artists = artists;
+      });
+
+      api.getCollectionByKey('programm2018').then((programm) => {
+        this.content.year2018.programm = programm;
       });
 
       api.getRegionByKey('programm2016').then((programm) => {
