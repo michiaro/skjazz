@@ -86,6 +86,105 @@
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
                     .collage__block.collage__block--link
+                      preview(:source="gallery.image_2016_01", @open="openGallery")
+              .col.col-xs-6
+                .ratio
+                  .ratio__expander.ratio__expander--xs-3x2
+                  .ratio__content
+                    .collage__block.collage__block--link
+                      preview(:source="gallery.image_2016_02", @open="openGallery")
+              .col.col-xs-12
+                .ratio
+                  .ratio__expander.ratio__expander--xs-3x2
+                  .ratio__content
+                    .collage__block.collage__block--link
+                      preview(:source="gallery.image_2016_03", @open="openGallery")
+          swiper-slide
+            .row
+              .col.col-xs-6
+                .ratio
+                  .ratio__expander.ratio__expander--xs-3x4
+                  .ratio__content
+                    .collage__block.collage__block--link
+                      preview(:source="gallery.image_2016_04", @open="openGallery")
+              .col.col-xs-6
+                .ratio
+                  .ratio__expander.ratio__expander--xs-3x2
+                  .ratio__content
+                    .collage__block
+                      .collage__text
+                        .collage__text--primary 2016
+                        .collage__text--default год
+                        .collage__text--secondary Состоялся впервые
+                .ratio
+                  .ratio__expander.ratio__expander--xs-3x2
+                  .ratio__content
+                    .collage__block.collage__block--link
+                      preview(:source="gallery.image_2016_05", @open="openGallery")
+            .row
+              .col.col-xs-6
+                .ratio
+                  .ratio__expander.ratio__expander--xs-3x2
+                  .ratio__content
+                    .collage__block
+                      .collage__text
+                        .collage__text--primary 12
+                        .collage__text--default артистов
+                        .collage__text--secondary Российские и мировые имена
+              .col.col-xs-6
+                .ratio
+                  .ratio__expander.ratio__expander--xs-3x2
+                  .ratio__content
+                    .collage__block.collage__block--link
+                      preview(:source="gallery.image_2016_06", @open="openGallery")
+          swiper-slide
+            .row
+              .col.col-xs-12
+                .ratio
+                  .ratio__expander.ratio__expander--xs-3x2
+                  .ratio__content
+                    .collage__block.collage__block--link
+                      preview(:source="gallery.image_2016_07", @open="openGallery")
+              .col.col-xs-6
+                .ratio
+                  .ratio__expander.ratio__expander--xs-3x2
+                  .ratio__content
+                    .collage__block.collage__block--link
+                      preview(:source="gallery.image_2016_08", @open="openGallery")
+              .col.col-xs-6
+                .ratio
+                  .ratio__expander.ratio__expander--xs-3x2
+                  .ratio__content
+                    .collage__block
+                      .collage__text
+                        .collage__text--default Лучшее джазовое событие года
+          swiper-slide
+            .row
+              .col.col-xs-6
+                .ratio
+                  .ratio__expander.ratio__expander--xs-3x2
+                  .ratio__content
+                    .collage__block.collage__block--link
+                      preview(:source="gallery.image_2016_09", @open="openGallery")
+              .col.col-xs-6
+                .ratio
+                  .ratio__expander.ratio__expander--xs-3x2
+                  .ratio__content
+                    .collage__block.collage__block--link
+                      preview(:source="gallery.image_2016_10", @open="openGallery")
+              .col.col-xs-12
+                .ratio
+                  .ratio__expander.ratio__expander--xs-3x2
+                  .ratio__content
+                    .collage__block.collage__block--link
+                      preview(:source="gallery.image_2016_11", @open="openGallery")
+          swiper-slide
+            .row
+              .col.col-xs-6
+                .ratio
+                  .ratio__expander.ratio__expander--xs-3x2
+                  .ratio__content
+                    .collage__block.collage__block--link
                       preview(:source="gallery.image_2017_01", @open="openGallery")
               .col.col-xs-6
                 .ratio
@@ -180,105 +279,6 @@
                   .ratio__content
                     .collage__block.collage__block--link
                       preview(:source="gallery.image_2017_11", @open="openGallery")
-          swiper-slide
-            .row
-              .col.col-xs-6
-                .ratio
-                  .ratio__expander.ratio__expander--xs-3x2
-                  .ratio__content
-                    .collage__block.collage__block--link
-                      preview(:source="gallery.image_2016_01", @open="openGallery")
-              .col.col-xs-6
-                .ratio
-                  .ratio__expander.ratio__expander--xs-3x2
-                  .ratio__content
-                    .collage__block.collage__block--link
-                      preview(:source="gallery.image_2016_02", @open="openGallery")
-              .col.col-xs-12
-                .ratio
-                  .ratio__expander.ratio__expander--xs-3x2
-                  .ratio__content
-                    .collage__block.collage__block--link
-                      preview(:source="gallery.image_2016_03", @open="openGallery")
-          swiper-slide
-            .row
-              .col.col-xs-6
-                .ratio
-                  .ratio__expander.ratio__expander--xs-3x4
-                  .ratio__content
-                    .collage__block.collage__block--link
-                      preview(:source="gallery.image_2016_04", @open="openGallery")
-              .col.col-xs-6
-                .ratio
-                  .ratio__expander.ratio__expander--xs-3x2
-                  .ratio__content
-                    .collage__block
-                      .collage__text
-                        .collage__text--primary 2016
-                        .collage__text--default год
-                        .collage__text--secondary Состоялся впервые
-                .ratio
-                  .ratio__expander.ratio__expander--xs-3x2
-                  .ratio__content
-                    .collage__block.collage__block--link
-                      preview(:source="gallery.image_2016_05", @open="openGallery")
-            .row
-              .col.col-xs-6
-                .ratio
-                  .ratio__expander.ratio__expander--xs-3x2
-                  .ratio__content
-                    .collage__block
-                      .collage__text
-                        .collage__text--primary 12
-                        .collage__text--default артистов
-                        .collage__text--secondary Российские и мировые имена
-              .col.col-xs-6
-                .ratio
-                  .ratio__expander.ratio__expander--xs-3x2
-                  .ratio__content
-                    .collage__block.collage__block--link
-                      preview(:source="gallery.image_2016_06", @open="openGallery")
-          swiper-slide
-            .row
-              .col.col-xs-12
-                .ratio
-                  .ratio__expander.ratio__expander--xs-3x2
-                  .ratio__content
-                    .collage__block.collage__block--link
-                      preview(:source="gallery.image_2016_07", @open="openGallery")
-              .col.col-xs-6
-                .ratio
-                  .ratio__expander.ratio__expander--xs-3x2
-                  .ratio__content
-                    .collage__block.collage__block--link
-                      preview(:source="gallery.image_2016_08", @open="openGallery")
-              .col.col-xs-6
-                .ratio
-                  .ratio__expander.ratio__expander--xs-3x2
-                  .ratio__content
-                    .collage__block
-                      .collage__text
-                        .collage__text--default Лучшее джазовое событие года
-          swiper-slide
-            .row
-              .col.col-xs-6
-                .ratio
-                  .ratio__expander.ratio__expander--xs-3x2
-                  .ratio__content
-                    .collage__block.collage__block--link
-                      preview(:source="gallery.image_2016_09", @open="openGallery")
-              .col.col-xs-6
-                .ratio
-                  .ratio__expander.ratio__expander--xs-3x2
-                  .ratio__content
-                    .collage__block.collage__block--link
-                      preview(:source="gallery.image_2016_10", @open="openGallery")
-              .col.col-xs-12
-                .ratio
-                  .ratio__expander.ratio__expander--xs-3x2
-                  .ratio__content
-                    .collage__block.collage__block--link
-                      preview(:source="gallery.image_2016_11", @open="openGallery")
       .call-to-action
         a.button.button--primary(
           target="_blank",
@@ -320,7 +320,9 @@
                 .program__section-description
                   h2 {{section.title}}
                   div(v-html="section.content")
-            .swiper-pagination.swiper-pagination-white.js-programm-pagination(slot="pagination")
+            .swiper-pagination.swiper-pagination-contrast.js-programm-pagination(slot="pagination")
+          .swiper-button-next.js-programm-next.program__button-next
+          .swiper-button-prev.js-programm-prev.program__button-prev
       .call-to-action
         a.button.button--primary(
           target="_blank",
@@ -364,8 +366,8 @@
             :src="slide.full"
           ).popup__image
       .swiper-pagination.swiper-pagination-white.js-gallery-pagination(slot="pagination")
-      .swiper-button-prev.swiper-button-white.js-gallery-next(slot="button-prev")
-      .swiper-button-next.swiper-button-white.js-gallery-prev(slot="button-next")
+      .swiper-button-next.swiper-button-white.js-gallery-next(slot="button-next")
+      .swiper-button-prev.swiper-button-white.js-gallery-prev(slot="button-prev")
 </template>
 
 <script>
@@ -527,6 +529,10 @@ export default {
       programmSliderOptions: {
         pagination: {
           el: '.js-programm-pagination',
+        },
+        navigation: {
+          nextEl: '.js-programm-next',
+          prevEl: '.js-programm-prev',
         },
       },
     };
