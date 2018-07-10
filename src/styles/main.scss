@@ -192,6 +192,8 @@
 
 .button {
   display: inline-block;
+  border: 0;
+  cursor: pointer;
   padding: 10px 25px;
   text-decoration: none;
   text-transform: uppercase;
@@ -596,6 +598,10 @@
 
   &__block {
     padding: 30px;
+
+    &--clickable {
+      cursor: pointer;
+    }
   }
 
   &__img {
@@ -696,9 +702,11 @@
   bottom: 0;
   right: 0;
   left: 0;
+  display: flex;
   background: rgba(0, 0, 0, 0.8);
   z-index: 1000;
   position: fixed;
+  overflow-y: auto;
   &__slide {
     display: flex;
     align-items: center;
@@ -747,5 +755,25 @@
 .swiper-pagination-contrast {
   .swiper-pagination-bullet {
     background: $color--contrast;
+  }
+}
+
+.artist-info {
+  max-width: 680px;
+  margin: auto;
+  background: white;
+
+  &__link {
+    color: $color--primary;
+    display: block;
+    text-decoration: underline;
+    margin: 1em 2em;
+  }
+  &__about {
+    padding: 0 2em;
+  }
+  &__ok {
+    text-align: center;
+    margin-bottom: 1em;
   }
 }

@@ -290,7 +290,9 @@
         Years(:currentYear="currentYear", :isContrast="true", @set="setYear")
         .row
           .col.col-xs-12.col-sm-6.col-lg-3(v-for="artist in content[currentYear].artists")
-            .artists__block
+            .artists__block(
+              @click="openArtist(artist)",
+              :class="{'artists__block--clickable':artist.about}")
               img.artists__img(
                 :src="artist.photo.path",
                 :alt="artist.name",
@@ -368,6 +370,19 @@
       .swiper-pagination.swiper-pagination-white.js-gallery-pagination(slot="pagination")
       .swiper-button-next.swiper-button-white.js-gallery-next(slot="button-next")
       .swiper-button-prev.swiper-button-white.js-gallery-prev(slot="button-prev")
+  .popup(v-if="currentArtist").main(@click.self="closeArtist")
+    button.popup__close(@click.stop="closeArtist")
+      svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 371.23 371.23")
+        path(d=`M371.23 21.213L350.018 0 185.615 164.402 21.213 0 0 21.213l164.402
+        164.402L0 350.018l21.213 21.212
+        164.402-164.402L350.018 371.23l21.212-21.212-164.402-164.403z`)
+    .artist-info
+      .artist-info__photo(v-if="currentArtist.photoWide")
+        img.preview(:src="currentArtist.photoWide.path", :alt="currentArtist.name")
+      a.artist-info__link(:href="currentArtist.link") {{currentArtist.link}}
+      .artist-info__about(v-html="currentArtist.about")
+      .artist-info__ok
+        button.button.button--primary(@click="closeArtist") Ок, спасибо!
 </template>
 
 <script>
@@ -526,6 +541,7 @@ export default {
         },
         rules: '',
       },
+      currentArtist: null,
       programmSliderOptions: {
         pagination: {
           el: '.js-programm-pagination',
@@ -655,6 +671,12 @@ export default {
     },
     closeGallery() {
       this.isGalleryOpen = false;
+    },
+    openArtist(artist) {
+      this.currentArtist = artist;
+    },
+    closeArtist() {
+      this.currentArtist = null;
     },
   },
 };
