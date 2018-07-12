@@ -333,7 +333,11 @@
     section#partners.partners.section
       .container
         h2.section__heading Партнеры
-        img(src="static/img/partners.png", alt="Партнеры", class="preview")
+        .partners__list
+          a.partners__link(
+            v-for="partner in partners",
+            :href="partner.link")
+            img.partners__logo(:src="partner.photo.path")
     section#rules.section.section--contrast
       .container
         h2.section__heading Правила фестиваля
@@ -542,6 +546,7 @@ export default {
         rules: '',
       },
       currentArtist: null,
+      partners: null,
       programmSliderOptions: {
         pagination: {
           el: '.js-programm-pagination',
@@ -580,6 +585,10 @@ export default {
 
       api.getCollectionByKey('programm2018').then((programm) => {
         this.content.year2018.programm = programm;
+      });
+
+      api.getCollectionByKey('partners').then((partners) => {
+        this.partners = partners;
       });
 
       api.getRegionByKey('programm2016').then((programm) => {
