@@ -1,10 +1,10 @@
 <template lang="pug">
   nav.nav
-    a.nav__link(href="#howitwas") Как это было
-    a.nav__link(href="#artists") Артисты
-    a.nav__link(href="#program") Программа
-    a.nav__link(href="#partners") Партнеры
-    a.nav__link(href="#contact") Контакты
+    a.nav__link(href="#program" @click="onClick") Программа
+    a.nav__link(href="#artists" @click="onClick") Артисты
+    a.nav__link(href="#howitwas" @click="onClick") Как это было
+    a.nav__link(href="#partners" @click="onClick") Партнеры
+    a.nav__link(href="#contact" @click="onClick") Контакты
     a.nav__link.nav__link--contrast(
       target="_blank",
       href="https://msk.kassir.ru/frame/event/104230?key=d68c4b88-00fb-ee51-8fdd-fec9d1c99539"
@@ -14,6 +14,9 @@
 <script>
 export default {
   name: 'Navigation',
+  props: {
+    onClick: Function,
+  },
 };
 </script>
 

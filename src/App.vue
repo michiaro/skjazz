@@ -18,12 +18,12 @@
               span.hamburger-inner
         transition(name="slide")
           aside#left-menu.panel(v-if="isMobile && isMenuOpen", v-cloak="")
-            navigation
+            navigation(:onClick="toggleMenu")
         header.header(v-if="!isMobile", v-cloak="")
           a.logo(href="/")
             img.logo__img(src="static/img/logo.png")
           .header__nav
-            navigation
+            navigation(:onClick="toggleMenu")
           .info
             .info__date 25 августа
             .info__place Москва | ИЦ Сколково
@@ -64,6 +64,52 @@
       #js-molecule-4.molecule.molecule--4
       #js-molecule-5.molecule.molecule--5
       #js-molecule-6.molecule.molecule--6
+    section#program.program.section
+      .container
+        h2.section__heading Программа
+        Years(:currentYear="currentYear", @set="setYear")
+        .program__content(v-if="currentYear === 'year2016'")
+          img.program__img(:src="content.year2016.programm.photo.path", alt="Программа фестиваля 2016")
+          .program__text(v-html="content.year2016.programm.content")
+        .program__content(v-if="currentYear === 'year2017'")
+          img.program__img(:src="content.year2017.programm.photo.path", alt="Программа фестиваля 2017")
+          .program__text(v-html="content.year2017.programm.content")
+        .program__content.program__content--slider(v-if="currentYear === 'year2018'")
+          swiper(:options="programmSliderOptions" ref="programmSwiper")
+            template(v-for="section in content.year2018.programm")
+              swiper-slide.program__section
+                .program__section-photo(:style="{'backgroundImage': 'url('+section.photo.path+')'}")
+                .program__section-description
+                  h2 {{section.title}}
+                  div(v-html="section.content")
+            .swiper-pagination.swiper-pagination-contrast.js-programm-pagination(slot="pagination")
+          .swiper-button-next.js-programm-next.program__button-next
+          .swiper-button-prev.js-programm-prev.program__button-prev
+      .call-to-action
+        a.button.button--primary(
+          target="_blank",
+          href="https://msk.kassir.ru/frame/event/104230?key=d68c4b88-00fb-ee51-8fdd-fec9d1c99539"
+        ) Купить Билеты
+    section#artists.artists.section.section--contrast
+      .container
+        h2.section__heading Артисты
+        Years(:currentYear="currentYear", :isContrast="true", @set="setYear")
+        .row
+          .col.col-xs-12.col-sm-6.col-lg-3(v-for="artist in content[currentYear].artists")
+            .artists__block(
+              @click="openArtist(artist)",
+              :class="{'artists__block--clickable':artist.about}")
+              img.artists__img(
+                :src="artist.photo.path",
+                :alt="artist.name",
+                :title="artist.alreadyPerformed ? 'Уже выступил' : null",
+                :class="{'artists__img--muted' : artist.alreadyPerformed}")
+              .artists__name {{artist.name}}
+        .call-to-action
+          a.button.button--contrast(
+            target="_blank",
+            href="https://msk.kassir.ru/frame/event/104230?key=d68c4b88-00fb-ee51-8fdd-fec9d1c99539"
+          ) Купить Билеты
     section#howitwas.howitwas.section
       .container
         h2.section__heading Как это было?
@@ -284,59 +330,25 @@
           target="_blank",
           href="https://msk.kassir.ru/frame/event/104230?key=d68c4b88-00fb-ee51-8fdd-fec9d1c99539"
         ) Купить Билеты
-    section#artists.artists.section.section--contrast
+    section#partners.partners.section(v-if="mainPartners.length")
       .container
-        h2.section__heading Артисты
-        Years(:currentYear="currentYear", :isContrast="true", @set="setYear")
-        .row
-          .col.col-xs-12.col-sm-6.col-lg-3(v-for="artist in content[currentYear].artists")
-            .artists__block(
-              @click="openArtist(artist)",
-              :class="{'artists__block--clickable':artist.about}")
-              img.artists__img(
-                :src="artist.photo.path",
-                :alt="artist.name",
-                :title="artist.alreadyPerformed ? 'Уже выступил' : null",
-                :class="{'artists__img--muted' : artist.alreadyPerformed}")
-              .artists__name {{artist.name}}
-        .call-to-action
-          a.button.button--contrast(
+        h2.section__heading Информационные партнеры
+        .partners__list
+          a.partners__link(
+            v-for="partner in mainPartners",
+            :href="partner.link",
             target="_blank",
-            href="https://msk.kassir.ru/frame/event/104230?key=d68c4b88-00fb-ee51-8fdd-fec9d1c99539"
-          ) Купить Билеты
-    section#program.program.section
-      .container
-        h2.section__heading Программа
-        Years(:currentYear="currentYear", @set="setYear")
-        .program__content(v-if="currentYear === 'year2016'")
-          img.program__img(:src="content.year2016.programm.photo.path", alt="Программа фестиваля 2016")
-          .program__text(v-html="content.year2016.programm.content")
-        .program__content(v-if="currentYear === 'year2017'")
-          img.program__img(:src="content.year2017.programm.photo.path", alt="Программа фестиваля 2017")
-          .program__text(v-html="content.year2017.programm.content")
-        .program__content.program__content--slider(v-if="currentYear === 'year2018'")
-          swiper(:options="programmSliderOptions" ref="programmSwiper")
-            template(v-for="section in content.year2018.programm")
-              swiper-slide.program__section
-                .program__section-photo(:style="{'backgroundImage': 'url('+section.photo.path+')'}")
-                .program__section-description
-                  h2 {{section.title}}
-                  div(v-html="section.content")
-            .swiper-pagination.swiper-pagination-contrast.js-programm-pagination(slot="pagination")
-          .swiper-button-next.js-programm-next.program__button-next
-          .swiper-button-prev.js-programm-prev.program__button-prev
-      .call-to-action
-        a.button.button--primary(
-          target="_blank",
-          href="https://msk.kassir.ru/frame/event/104230?key=d68c4b88-00fb-ee51-8fdd-fec9d1c99539"
-        ) Купить Билеты
-    section#partners.partners.section
+            rel="noopener noreferrer nofollow")
+            img.partners__logo(:src="partner.photo.path")
+    section#partners.partners.section(v-if="partners.length")
       .container
         h2.section__heading Партнеры
         .partners__list
           a.partners__link(
             v-for="partner in partners",
-            :href="partner.link")
+            :href="partner.link",
+            target="_blank",
+            rel="noopener noreferrer nofollow")
             img.partners__logo(:src="partner.photo.path")
     section#rules.section.section--contrast
       .container
@@ -547,6 +559,7 @@ export default {
       },
       currentArtist: null,
       partners: null,
+      mainPartners: null,
       programmSliderOptions: {
         pagination: {
           el: '.js-programm-pagination',
@@ -589,6 +602,10 @@ export default {
 
       api.getCollectionByKey('partners').then((partners) => {
         this.partners = partners;
+      });
+
+      api.getCollectionByKey('mainPartners').then((mainPartners) => {
+        this.mainPartners = mainPartners;
       });
 
       api.getRegionByKey('programm2016').then((programm) => {
@@ -659,6 +676,7 @@ export default {
       this.isMenuOpen = window.innerWidth >= 1200;
     },
     toggleMenu() {
+      console.log('toggleMenu');
       this.isMenuOpen = !this.isMenuOpen;
     },
     closeMenu() {

@@ -695,6 +695,16 @@
 
 .partners {
   padding-bottom: 60px;
+  &__list {
+    max-width: 1024px;
+    margin: auto;
+  }
+  &__link {
+    display: inline-block;
+  }
+  &__logo {
+    display: block;
+  }
 }
 
 .popup {
