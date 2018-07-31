@@ -333,8 +333,8 @@
     section#partners.partners.section(v-if="mainPartners.length")
       .container
         h2.section__heading Информационные партнеры
-        .partners__list
-          a.partners__link(
+        .partners__list.partners__list--info
+          a.partners__link.partners__link--info(
             v-for="partner in mainPartners",
             :href="partner.link",
             target="_blank",
