@@ -75,6 +75,7 @@
           img.program__img(:src="content.year2017.programm.photo.path", alt="Программа фестиваля 2017")
           .program__text(v-html="content.year2017.programm.content")
         .program__content.program__content--slider(v-if="currentYear === 'year2018'")
+          .program__text(v-html="content.schedule.content")
           swiper(:options="programmSliderOptions" ref="programmSwiper")
             template(v-for="section in content.year2018.programm")
               swiper-slide.program__section
@@ -330,7 +331,7 @@
           target="_blank",
           href="https://msk.kassir.ru/frame/event/104230?key=d68c4b88-00fb-ee51-8fdd-fec9d1c99539"
         ) Купить Билеты
-    section#partners.partners.section(v-if="mainPartners.length")
+    section#partners.partners.section(v-if="mainPartners")
       .container
         h2.section__heading Информационные партнеры
         .partners__list.partners__list--info
@@ -340,7 +341,7 @@
             target="_blank",
             rel="noopener noreferrer nofollow")
             img.partners__logo(:src="partner.photo.path")
-    section#partners.partners.section(v-if="partners.length")
+    section#partners.partners.section(v-if="partners")
       .container
         h2.section__heading Партнеры
         .partners__list
@@ -556,6 +557,7 @@ export default {
           programm: {},
         },
         rules: '',
+        schedule: '',
       },
       currentArtist: null,
       partners: null,
@@ -618,6 +620,10 @@ export default {
 
       api.getRegionByKey('rules').then((rules) => {
         this.content.rules = rules;
+      });
+
+      api.getRegionByKey('schedule').then((schedule) => {
+        this.content.schedule = schedule;
       });
 
       this.swiper.on('slideChangeTransitionEnd', () => {
