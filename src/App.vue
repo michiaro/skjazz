@@ -66,6 +66,8 @@
       #js-molecule-6.molecule.molecule--6
     section#program.program.section
       .container
+        h2.section__heading Расписание лектория
+        .program__text(v-html="content.schedule.content")
         h2.section__heading Программа
         Years(:currentYear="currentYear", @set="setYear")
         .program__content(v-if="currentYear === 'year2016'")
@@ -75,7 +77,6 @@
           img.program__img(:src="content.year2017.programm.photo.path", alt="Программа фестиваля 2017")
           .program__text(v-html="content.year2017.programm.content")
         .program__content.program__content--slider(v-if="currentYear === 'year2018'")
-          .program__text(v-html="content.schedule.content")
           swiper(:options="programmSliderOptions" ref="programmSwiper")
             template(v-for="section in content.year2018.programm")
               swiper-slide.program__section
@@ -111,6 +112,16 @@
             target="_blank",
             href="https://msk.kassir.ru/frame/event/104230?key=d68c4b88-00fb-ee51-8fdd-fec9d1c99539"
           ) Купить Билеты
+    section#discuss.discuss.section
+      .container
+        h2.section__heading Большие лекции
+        .row
+          .col.col-xs-12
+            img(src="static/img/viskuss-1.png").preview.discuss__photo
+          .col.col-xs-12.col-lg-6
+            img(src="static/img/viskuss-2.png").preview.discuss__photo
+          .col.col-xs-12.col-lg-6
+            img(src="static/img/viskuss-3.png").preview.discuss__photo
     section#howitwas.howitwas.section
       .container
         h2.section__heading Как это было?
@@ -716,3 +727,8 @@ export default {
 </script>
 
 <style lang="scss"></style>
+
+
+
+// WEBPACK FOOTER //
+// App.vue

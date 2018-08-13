@@ -816,3 +816,10 @@
     margin-bottom: 1em;
   }
 }
+
+.discuss {
+  &__photo {
+    margin: 0.3em 0.6em;
+    max-width: calc(100% - 0.6em);
+  }
+}
