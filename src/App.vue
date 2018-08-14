@@ -19,6 +19,10 @@
         transition(name="slide")
           aside#left-menu.panel(v-if="isMobile && isMenuOpen", v-cloak="")
             navigation(:onClick="toggleMenu")
+            a.nav__link.nav__link--contrast(
+              target="_blank",
+              href="https://msk.kassir.ru/frame/event/104230?key=d68c4b88-00fb-ee51-8fdd-fec9d1c99539"
+            ) Купить билеты
         header.header(v-if="!isMobile", v-cloak="")
           a.logo(href="/")
             img.logo__img(src="static/img/logo.png")
@@ -27,6 +31,10 @@
           .info
             .info__date 25 августа
             .info__place Москва | ИЦ Сколково
+            a.nav__link.nav__link--contrast(
+              target="_blank",
+              href="https://msk.kassir.ru/frame/event/104230?key=d68c4b88-00fb-ee51-8fdd-fec9d1c99539"
+            ) Купить билеты
         .content
           .content__small
             | это непередаваемая

@@ -2,13 +2,10 @@
   nav.nav
     a.nav__link(href="#program" @click="onClick") Программа
     a.nav__link(href="#artists" @click="onClick") Артисты
+    a.nav__link(href="#discuss" @click="onClick") Дискуссии
     a.nav__link(href="#howitwas" @click="onClick") Как это было
     a.nav__link(href="#partners" @click="onClick") Партнеры
     a.nav__link(href="#contact" @click="onClick") Контакты
-    a.nav__link.nav__link--contrast(
-      target="_blank",
-      href="https://msk.kassir.ru/frame/event/104230?key=d68c4b88-00fb-ee51-8fdd-fec9d1c99539"
-    ) Купить билеты
 </template>
 
 <script>
