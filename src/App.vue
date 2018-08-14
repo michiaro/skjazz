@@ -122,7 +122,7 @@
           ) Купить Билеты
     section#discuss.discuss.section
       .container
-        h2.section__heading Большие лекции
+        h2.section__heading Дискуссии
         .row
           .col.col-xs-12
             img(src="static/img/viskuss-1.png").preview.discuss__photo
