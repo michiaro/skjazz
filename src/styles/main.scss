@@ -790,6 +790,10 @@
 
 .coordinates {
   text-align: center;
+
+  &__photo {
+    margin: 15px 0;
+  }
 }
 
 .rules {

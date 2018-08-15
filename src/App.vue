@@ -378,6 +378,9 @@
       .container
         h2.section__heading Как добраться
         p В течение всего дня будут курсировать бесплатные шатлы от станции метро Парк Победы до места проведения фестиваля
+        img(src="static/img/parking_free.png").preview.coordinates__photo
+        img(src="static/img/bus.png").preview.coordinates__photo
+        img(src="static/img/taxi_or_car.png").preview.coordinates__photo
     section#contact.contact.section
       .container
         h2.section__heading Контакты
