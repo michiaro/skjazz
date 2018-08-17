@@ -669,7 +669,7 @@
     }
 
     p {
-      text-indent: 2em;
+      // text-indent: 2em;
     }
   }
 
@@ -848,4 +848,8 @@
   .swiper-button-next, .swiper-button-prev {
     display: block;
   }
+}
+
+.lecture {
+  padding: 25px 0;
 }

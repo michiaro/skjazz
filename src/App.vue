@@ -74,8 +74,6 @@
       #js-molecule-6.molecule.molecule--6
     section#program.program.section
       .container
-        h2.section__heading Расписание лектория
-        .program__text(v-html="content.schedule.content")
         h2.section__heading Программа
         Years(:currentYear="currentYear", @set="setYear")
         .program__content(v-if="currentYear === 'year2016'")
@@ -95,6 +93,9 @@
             .swiper-pagination.swiper-pagination-contrast.js-programm-pagination(slot="pagination")
           .swiper-button-next.js-programm-next.program__button-next
           .swiper-button-prev.js-programm-prev.program__button-prev
+        .lecture
+          h2.section__heading Расписание лектория
+          .program__text(v-html="content.schedule.content")
       .call-to-action
         a.button.button--primary(
           target="_blank",
@@ -378,9 +379,9 @@
       .container
         h2.section__heading Как добраться
         p В течение всего дня будут курсировать бесплатные шатлы от станции метро Парк Победы до места проведения фестиваля
-        img(src="static/img/parking_free.png").preview.coordinates__photo
         img(src="static/img/bus.png").preview.coordinates__photo
         img(src="static/img/taxi_or_car.png").preview.coordinates__photo
+        img(src="static/img/parking_free.png").preview.coordinates__photo
     section#contact.contact.section
       .container
         h2.section__heading Контакты
