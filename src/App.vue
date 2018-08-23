@@ -8,7 +8,10 @@
             img.mobile-logo__img(src="static/img/logo.png")
           .info
             .info__date 25 августа
-            .info__place Москва | ИЦ Сколково
+            .info__place 
+              | 12:00 — 23:00
+              br
+              | Москва | ИЦ Сколково
           button.hamburger.hamburger--emphatic(
             :class="{'is-active' : isMenuOpen}",
             type="button",
@@ -30,7 +33,10 @@
             navigation(:onClick="toggleMenu")
           .info
             .info__date 25 августа
-            .info__place Москва | ИЦ Сколково
+            .info__place 
+              | 12:00 — 23:00
+              br
+              | Москва | ИЦ Сколково
             a.nav__link.nav__link--contrast(
               target="_blank",
               href="https://msk.kassir.ru/frame/event/104230?key=d68c4b88-00fb-ee51-8fdd-fec9d1c99539"
@@ -116,6 +122,7 @@
                 :title="artist.alreadyPerformed ? 'Уже выступил' : null",
                 :class="{'artists__img--muted' : artist.alreadyPerformed}")
               .artists__name {{artist.name}}
+        img.preview.artists__timing(src="static/img/artists_timing.png")
         .call-to-action
           a.button.button--contrast(
             target="_blank",

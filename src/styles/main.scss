@@ -130,9 +130,9 @@
     }
 
     &__place {
-      font-size: 16px;
-      padding-top: 10px;
+      padding-top: 3px;
       margin-bottom: 10px;
+      line-height: 1.2;
     }
   }
 }
@@ -632,6 +632,12 @@
     text-align: center;
     margin-top: 15px;
     line-height: 1.2;
+  }
+
+  &__timing {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px;
   }
 }
 
