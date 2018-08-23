@@ -133,7 +133,7 @@
         h2.section__heading Дискуссии
         .row
           .col.col-xs-12
-            img(src="static/img/viskuss-1.png", @click="openDiscussion('static/img/viskuss-1.png')").preview.discuss__photo
+            img(src="static/img/viskuss-1.png").preview.discuss__photo
           .col.col-xs-12.col-lg-6
             img(src="static/img/viskuss-2.png", @click="openDiscussion('static/img/viskuss-2.png')").preview.discuss__photo
           .col.col-xs-12.col-lg-6
