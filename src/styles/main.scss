@@ -130,9 +130,9 @@
     }
 
     &__place {
-      font-size: 16px;
-      padding-top: 10px;
+      padding-top: 3px;
       margin-bottom: 10px;
+      line-height: 1.2;
     }
   }
 }
@@ -633,6 +633,12 @@
     margin-top: 15px;
     line-height: 1.2;
   }
+
+  &__timing {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px;
+  }
 }
 
 .program {
@@ -666,6 +672,14 @@
       width: 60%;
       margin-left: auto;
       margin-right: auto;
+    }
+
+    p {
+      // text-indent: 2em;
+    }
+
+    div {
+      font-size: 16px;
     }
   }
 
@@ -787,6 +801,10 @@
 
 .coordinates {
   text-align: center;
+
+  &__photo {
+    margin: 15px 0;
+  }
 }
 
 .rules {
@@ -830,6 +848,7 @@
   &__photo {
     margin: 0.3em 0.6em;
     max-width: calc(100% - 0.6em);
+    cursor: pointer;
   }
 }
 
@@ -843,4 +862,14 @@
   .swiper-button-prev {
     display: block;
   }
+}
+
+.lecture {
+  padding: 25px 0;
+}
+
+.discussion-popup {
+  max-width: 100%;
+  height: auto;
+  margin: auto;
 }
