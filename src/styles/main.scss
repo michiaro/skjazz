@@ -130,9 +130,9 @@
     }
 
     &__place {
-      font-size: 16px;
-      padding-top: 10px;
+      padding-top: 3px;
       margin-bottom: 10px;
+      line-height: 1.2;
     }
   }
 }
@@ -633,6 +633,12 @@
     margin-top: 15px;
     line-height: 1.2;
   }
+
+  &__timing {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px;
+  }
 }
 
 .program {
@@ -685,7 +691,7 @@
       display: flex;
     }
   }
-  
+
   &__section-description {
     padding: 1em 2em;
     @media screen and (min-width: 768px) {
@@ -719,10 +725,11 @@
     flex-flow: row wrap;
     align-content: space-between;
     justify-content: space-between;
-    
+
     @media screen and (min-width: 1024px) {
-        &--info {
-        &::before, &::after {
+      &--info {
+        &::before,
+        &::after {
           content: "";
           width: 100%;
           order: 1;
@@ -841,19 +848,28 @@
   &__photo {
     margin: 0.3em 0.6em;
     max-width: calc(100% - 0.6em);
+    cursor: pointer;
   }
 }
 
-.swiper-button-next, .swiper-button-prev {
+.swiper-button-next,
+.swiper-button-prev {
   display: none;
 }
 
 @media screen and (min-width: 1024px) {
-  .swiper-button-next, .swiper-button-prev {
+  .swiper-button-next,
+  .swiper-button-prev {
     display: block;
   }
 }
 
 .lecture {
   padding: 25px 0;
+}
+
+.discussion-popup {
+  max-width: 100%;
+  height: auto;
+  margin: auto;
 }

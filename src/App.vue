@@ -8,7 +8,10 @@
             img.mobile-logo__img(src="static/img/logo.png")
           .info
             .info__date 25 августа
-            .info__place Москва | ИЦ Сколково
+            .info__place
+              | 12:00 — 23:00
+              br
+              | Москва | ИЦ Сколково
           button.hamburger.hamburger--emphatic(
             :class="{'is-active' : isMenuOpen}",
             type="button",
@@ -30,7 +33,10 @@
             navigation(:onClick="toggleMenu")
           .info
             .info__date 25 августа
-            .info__place Москва | ИЦ Сколково
+            .info__place
+              | 12:00 — 23:00
+              br
+              | Москва | ИЦ Сколково
             a.nav__link.nav__link--contrast(
               target="_blank",
               href="https://msk.kassir.ru/frame/event/104230?key=d68c4b88-00fb-ee51-8fdd-fec9d1c99539"
@@ -116,6 +122,7 @@
                 :title="artist.alreadyPerformed ? 'Уже выступил' : null",
                 :class="{'artists__img--muted' : artist.alreadyPerformed}")
               .artists__name {{artist.name}}
+        img.preview.artists__timing(src="static/img/artists_timing.png")
         .call-to-action
           a.button.button--contrast(
             target="_blank",
@@ -128,9 +135,9 @@
           .col.col-xs-12
             img(src="static/img/viskuss-1.png").preview.discuss__photo
           .col.col-xs-12.col-lg-6
-            img(src="static/img/viskuss-2.png").preview.discuss__photo
+            img(src="static/img/viskuss-2.png", @click="openDiscussion('static/img/viskuss-2.png')").preview.discuss__photo
           .col.col-xs-12.col-lg-6
-            img(src="static/img/viskuss-3.png").preview.discuss__photo
+            img(src="static/img/viskuss-3.png", @click="openDiscussion('static/img/viskuss-3.png')").preview.discuss__photo
     section#howitwas.howitwas.section
       .container
         h2.section__heading Как это было?
@@ -423,6 +430,13 @@
       .artist-info__about(v-html="currentArtist.about")
       .artist-info__ok
         button.button.button--primary(@click="closeArtist") Ок, спасибо!
+  .popup(v-if="currentDiscussion").main(@click.self="closeDiscussion")
+    button.popup__close(@click.stop="closeDiscussion")
+      svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 371.23 371.23")
+        path(d=`M371.23 21.213L350.018 0 185.615 164.402 21.213 0 0 21.213l164.402
+        164.402L0 350.018l21.213 21.212
+        164.402-164.402L350.018 371.23l21.212-21.212-164.402-164.403z`)
+    img(:src="currentDiscussion").preview.discussion-popup
 </template>
 
 <script>
@@ -594,6 +608,7 @@ export default {
           prevEl: '.js-programm-prev',
         },
       },
+      currentDiscussion: null,
     };
   },
   computed: {
@@ -734,13 +749,14 @@ export default {
     closeArtist() {
       this.currentArtist = null;
     },
+    openDiscussion(discussion) {
+      this.currentDiscussion = discussion;
+    },
+    closeDiscussion() {
+      this.currentDiscussion = null;
+    },
   },
 };
 </script>
 
 <style lang="scss"></style>
-
-
-
-// WEBPACK FOOTER //
-// App.vue
