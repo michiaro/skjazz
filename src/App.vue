@@ -7,7 +7,7 @@
           a.mobile-logo(href="/")
             img.mobile-logo__img(src="static/img/logo.png")
           .info
-            .info__date 25 августа
+            .info__date 24 августа
             .info__place
               | 12:00 — 23:00
               br
@@ -24,7 +24,8 @@
             navigation(:onClick="toggleMenu")
             a.nav__link.nav__link--contrast(
               target="_blank",
-              href="https://msk.kassir.ru/frame/event/104230?key=d68c4b88-00fb-ee51-8fdd-fec9d1c99539"
+              href="https://msk.kassir.ru/festivali/innovatsionnyiy-tsentr-skolkovo/skolkovo-jazz-science_2019-08-24",
+              onClick="return window.kassirWidget.summon()"
             ) Купить билеты
         header.header(v-if="!isMobile", v-cloak="")
           a.logo(href="/")
@@ -32,14 +33,15 @@
           .header__nav
             navigation(:onClick="toggleMenu")
           .info
-            .info__date 25 августа
+            .info__date 24 августа
             .info__place
               | 12:00 — 23:00
               br
               | Москва | ИЦ Сколково
             a.nav__link.nav__link--contrast(
               target="_blank",
-              href="https://msk.kassir.ru/frame/event/104230?key=d68c4b88-00fb-ee51-8fdd-fec9d1c99539"
+              href="https://msk.kassir.ru/festivali/innovatsionnyiy-tsentr-skolkovo/skolkovo-jazz-science_2019-08-24",
+              onClick="return window.kassirWidget.summon()"
             ) Купить билеты
         .content
           .content__small
@@ -58,7 +60,8 @@
           .content__mobile-buy-tickets
             a.button.button--contrast(
               target="_blank",
-              href="https://msk.kassir.ru/frame/event/104230?key=d68c4b88-00fb-ee51-8fdd-fec9d1c99539"
+              href="https://msk.kassir.ru/festivali/innovatsionnyiy-tsentr-skolkovo/skolkovo-jazz-science_2019-08-24",
+              onClick="return window.kassirWidget.summon()"
             ) Купить билеты
           .content-aside
             .social
@@ -81,7 +84,7 @@
     section#program.program.section
       .container
         h2.section__heading Программа
-        Years(:currentYear="currentYear", @set="setYear")
+        Years(:currentYear="currentYear", @set="setYear", :years="[2016, 2017, 2018]")
         .program__content(v-if="currentYear === 'year2016'")
           img.program__img(:src="content.year2016.programm.photo.path", alt="Программа фестиваля 2016")
           .program__text(v-html="content.year2016.programm.content")
@@ -99,18 +102,19 @@
             .swiper-pagination.swiper-pagination-contrast.js-programm-pagination(slot="pagination")
           .swiper-button-next.js-programm-next.program__button-next
           .swiper-button-prev.js-programm-prev.program__button-prev
-        .lecture
-          h2.section__heading Расписание лектория
-          .program__text(v-html="content.schedule.content")
+        //- .lecture
+        //-   h2.section__heading Расписание лектория
+        //-   .program__text(v-html="content.schedule.content")
       .call-to-action
         a.button.button--primary(
           target="_blank",
-          href="https://msk.kassir.ru/frame/event/104230?key=d68c4b88-00fb-ee51-8fdd-fec9d1c99539"
+          href="https://msk.kassir.ru/festivali/innovatsionnyiy-tsentr-skolkovo/skolkovo-jazz-science_2019-08-24",
+          onClick="return window.kassirWidget.summon()"
         ) Купить Билеты
     section#artists.artists.section.section--contrast
       .container
         h2.section__heading Артисты
-        Years(:currentYear="currentYear", :isContrast="true", @set="setYear")
+        Years(:currentYear="currentYear", :isContrast="true", @set="setYear", :years="[2016, 2017, 2018]")
         .row
           .col.col-xs-12.col-sm-6.col-lg-3(v-for="artist in content[currentYear].artists")
             .artists__block(
@@ -120,18 +124,21 @@
                 :src="artist.photo.path",
                 :alt="artist.name",
                 :title="artist.alreadyPerformed ? 'Уже выступил' : null",
-                :class="{'artists__img--muted' : artist.alreadyPerformed}")
+                :class="{'artists__img--muted' : artist.alreadyPerformed}"
+              )
               .artists__name {{artist.name}}
-        img.preview.artists__timing(src="static/img/artists_timing.png")
+        //- img.preview.artists__timing(src="static/img/artists_timing.png")
         .call-to-action
           a.button.button--contrast(
             target="_blank",
-            href="https://msk.kassir.ru/frame/event/104230?key=d68c4b88-00fb-ee51-8fdd-fec9d1c99539"
+            href="https://msk.kassir.ru/festivali/innovatsionnyiy-tsentr-skolkovo/skolkovo-jazz-science_2019-08-24",
+            onClick="return window.kassirWidget.summon()"
           ) Купить Билеты
     section#discuss.discuss.section
       .container
         h2.section__heading Дискуссии
-        .row
+        Years(:currentYear="currentYear", @set="setYear", :years="[2018]")
+        .row.discuss__block
           .col.col-xs-12
             img(src="static/img/viskuss-1.png").preview.discuss__photo
           .col.col-xs-12.col-lg-6
@@ -149,8 +156,12 @@
             ) 2016
           button.years__item(
             @click="slideTo(4)",
-            :class="{'years__item--active': activeIndex >= 4}"
+            :class="{'years__item--active': activeIndex >= 4 && activeIndex < 8}"
             ) 2017
+          button.years__item(
+            @click="slideTo(8)",
+            :class="{'years__item--active': activeIndex >= 8}"
+            ) 2018
       .collage
         swiper(:options="newsfeedOption" ref="newsfeedSwiper")
           swiper-slide
@@ -353,31 +364,53 @@
                   .ratio__content
                     .collage__block.collage__block--link
                       preview(:source="gallery.image_2017_11", @open="openGallery")
+          swiper-slide
+            .row
+              .col.col-xs-12
+                .ratio
+                  .ratio__expander.ratio__expander--xs-3x2
+                  .ratio__content
+                    .collage__block.collage__block--link
+                      preview(:source="gallery.image_2018_01", @open="openGallery")
+              .col.col-xs-6
+                .ratio
+                  .ratio__expander.ratio__expander--xs-3x2
+                  .ratio__content
+                    .collage__block.collage__block--link
+                      preview(:source="gallery.image_2018_02", @open="openGallery")
+              .col.col-xs-6
+                .ratio
+                  .ratio__expander.ratio__expander--xs-3x2
+                  .ratio__content
+                    .collage__block.collage__block--link
+                      preview(:source="gallery.image_2018_03", @open="openGallery")
+
       .call-to-action
         a.button.button--primary(
           target="_blank",
-          href="https://msk.kassir.ru/frame/event/104230?key=d68c4b88-00fb-ee51-8fdd-fec9d1c99539"
+          href="https://msk.kassir.ru/festivali/innovatsionnyiy-tsentr-skolkovo/skolkovo-jazz-science_2019-08-24",
+          onClick="return window.kassirWidget.summon()"
         ) Купить Билеты
-    section#partners.partners.section(v-if="mainPartners")
-      .container
-        h2.section__heading Информационные партнеры
-        .partners__list.partners__list--info
-          a.partners__link.partners__link--info(
-            v-for="partner in mainPartners",
-            :href="partner.link",
-            target="_blank",
-            rel="noopener noreferrer nofollow")
-            img.partners__logo(:src="partner.photo.path")
-    section#partners.partners.section(v-if="partners")
-      .container
-        h2.section__heading Партнеры
-        .partners__list
-          a.partners__link(
-            v-for="partner in partners",
-            :href="partner.link",
-            target="_blank",
-            rel="noopener noreferrer nofollow")
-            img.partners__logo(:src="partner.photo.path")
+    //- section#partners.partners.section(v-if="mainPartners")
+    //-   .container
+    //-     h2.section__heading Информационные партнеры
+    //-     .partners__list.partners__list--info
+    //-       a.partners__link.partners__link--info(
+    //-         v-for="partner in mainPartners",
+    //-         :href="partner.link",
+    //-         target="_blank",
+    //-         rel="noopener noreferrer nofollow")
+    //-         img.partners__logo(:src="partner.photo.path")
+    //- section#partners.partners.section(v-if="partners")
+    //-   .container
+    //-     h2.section__heading Партнеры
+    //-     .partners__list
+    //-       a.partners__link(
+    //-         v-for="partner in partners",
+    //-         :href="partner.link",
+    //-         target="_blank",
+    //-         rel="noopener noreferrer nofollow")
+    //-         img.partners__logo(:src="partner.photo.path")
     section#rules.section.section--contrast
       .container
         h2.section__heading Правила фестиваля
@@ -386,9 +419,9 @@
       .container
         h2.section__heading Как добраться
         p В течение всего дня будут курсировать бесплатные шатлы от станции метро Парк Победы до места проведения фестиваля
-        img(src="static/img/bus.png").preview.coordinates__photo
-        img(src="static/img/taxi_or_car.png").preview.coordinates__photo
-        img(src="static/img/parking_free.png").preview.coordinates__photo
+        //- img(src="static/img/bus.png").preview.coordinates__photo
+        //- img(src="static/img/taxi_or_car.png").preview.coordinates__photo
+        //- img(src="static/img/parking_free.png").preview.coordinates__photo
     section#contact.contact.section
       .container
         h2.section__heading Контакты
@@ -561,6 +594,19 @@ export default {
           full: 'static/img/2017/10.jpg',
         },
         image_2017_11: {
+          thumb: 'static/img/2017-11.png',
+          full: 'static/img/2017/11.jpg',
+        },
+        image_2018_01: {
+          thumb: 'static/img/video-2018.gif',
+          full: 'static/img/2017/7.jpg',
+          videoId: '5A5zxLaytDI',
+        },
+        image_2018_02: {
+          thumb: 'static/img/2017-10.png',
+          full: 'static/img/2017/10.jpg',
+        },
+        image_2018_03: {
           thumb: 'static/img/2017-11.png',
           full: 'static/img/2017/11.jpg',
         },

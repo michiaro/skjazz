@@ -850,6 +850,9 @@
     max-width: calc(100% - 0.6em);
     cursor: pointer;
   }
+  &__block {
+    margin-top: 30px;
+  }
 }
 
 .swiper-button-next,

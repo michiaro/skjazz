@@ -1,23 +1,12 @@
 <template lang="pug">
 .years
-    button.years__item(
-      @click="$emit('set','year2016')",
-      :class=`{
-        'years__item--active': currentYear === 'year2016',
-        'years__item--contrast': isContrast
-      }`) 2016
-    button.years__item(
-      @click="$emit('set','year2017')",
-      :class=`{
-        'years__item--active': currentYear === 'year2017',
-        'years__item--contrast': isContrast
-      }`) 2017
-    button.years__item(
-      @click="$emit('set','year2018')",
-      :class=`{
-        'years__item--active': currentYear === 'year2018',
-        'years__item--contrast': isContrast
-      }`) 2018
+  button.years__item(
+    v-for="year in years"
+    @click="$emit('set',getYearId(year))",
+    :class=`{
+      'years__item--active': currentYear === getYearId(year),
+      'years__item--contrast': isContrast
+    }`) {{year}}
 </template>
 
 <script>
@@ -27,7 +16,13 @@ export default {
   props: {
     currentYear: String,
     isContrast: Boolean,
+    years: Array,
   },
+  methods: {
+    getYearId(yearNumber) {
+      return `year${yearNumber}`;
+    },
+  }
 };
 </script>
 
