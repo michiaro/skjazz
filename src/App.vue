@@ -24,7 +24,7 @@
             navigation(:onClick="toggleMenu")
             a.nav__link.nav__link--contrast(
               target="_blank",
-              href="https://msk.kassir.ru/festivali/innovatsionnyiy-tsentr-skolkovo/skolkovo-jazz-science_2019-08-24",
+              href="https://msk.kassir.ru/frame/entry/index?key=115acf3b-5419-dff7-9a70-365c430d8d08&type=E&id=152421",
               onClick="return window.kassirWidget.summon()"
             ) Купить билеты
         header.header(v-if="!isMobile", v-cloak="")
@@ -40,7 +40,7 @@
               | Москва | ИЦ Сколково
             a.nav__link.nav__link--contrast(
               target="_blank",
-              href="https://msk.kassir.ru/festivali/innovatsionnyiy-tsentr-skolkovo/skolkovo-jazz-science_2019-08-24",
+              href="https://msk.kassir.ru/frame/entry/index?key=115acf3b-5419-dff7-9a70-365c430d8d08&type=E&id=152421",
               onClick="return window.kassirWidget.summon()"
             ) Купить билеты
         .content
@@ -60,7 +60,7 @@
           .content__mobile-buy-tickets
             a.button.button--contrast(
               target="_blank",
-              href="https://msk.kassir.ru/festivali/innovatsionnyiy-tsentr-skolkovo/skolkovo-jazz-science_2019-08-24",
+              href="https://msk.kassir.ru/frame/entry/index?key=115acf3b-5419-dff7-9a70-365c430d8d08&type=E&id=152421",
               onClick="return window.kassirWidget.summon()"
             ) Купить билеты
           .content-aside
@@ -108,7 +108,7 @@
       .call-to-action
         a.button.button--primary(
           target="_blank",
-          href="https://msk.kassir.ru/festivali/innovatsionnyiy-tsentr-skolkovo/skolkovo-jazz-science_2019-08-24",
+          href="https://msk.kassir.ru/frame/entry/index?key=115acf3b-5419-dff7-9a70-365c430d8d08&type=E&id=152421",
           onClick="return window.kassirWidget.summon()"
         ) Купить Билеты
     section#artists.artists.section.section--contrast
@@ -131,7 +131,7 @@
         .call-to-action
           a.button.button--contrast(
             target="_blank",
-            href="https://msk.kassir.ru/festivali/innovatsionnyiy-tsentr-skolkovo/skolkovo-jazz-science_2019-08-24",
+            href="https://msk.kassir.ru/frame/entry/index?key=115acf3b-5419-dff7-9a70-365c430d8d08&type=E&id=152421",
             onClick="return window.kassirWidget.summon()"
           ) Купить Билеты
     section#discuss.discuss.section
@@ -388,7 +388,7 @@
       .call-to-action
         a.button.button--primary(
           target="_blank",
-          href="https://msk.kassir.ru/festivali/innovatsionnyiy-tsentr-skolkovo/skolkovo-jazz-science_2019-08-24",
+          href="https://msk.kassir.ru/frame/entry/index?key=115acf3b-5419-dff7-9a70-365c430d8d08&type=E&id=152421",
           onClick="return window.kassirWidget.summon()"
         ) Купить Билеты
     //- section#partners.partners.section(v-if="mainPartners")
