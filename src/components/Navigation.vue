@@ -33,6 +33,7 @@ export default {
   &__link {
     padding: 10px 16px;
     color: white;
+    border: 0;
     text-decoration: none;
     text-transform: uppercase;
     font-size: 16px;

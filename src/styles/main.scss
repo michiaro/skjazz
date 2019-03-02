@@ -763,6 +763,7 @@
   z-index: 1000;
   position: fixed;
   overflow-y: auto;
+  
   &__slide {
     display: flex;
     align-items: center;
@@ -774,18 +775,27 @@
     max-height: 100%;
   }
   &__close {
-    background: none;
+    top: 0;
+    right: 0;
     border: none;
     cursor: pointer;
     position: absolute;
-    right: 32px;
-    top: 32px;
+    background: white;
     z-index: 2;
-
+    @media screen and (min-width: 768px) {
+      background: none;
+      right: 32px;
+      top: 32px;
+    }
     & svg {
-      width: 44px;
-      height: 44px;
-      fill: white;
+      width: 32px;
+      height: 32px;
+      fill: black;
+      @media screen and (min-width: 768px) {
+        width: 44px;
+        height: 44px;
+        fill: white;
+      }
     }
   }
   &__video {
@@ -825,10 +835,14 @@
 }
 
 .artist-info {
-  max-width: 680px;
-  margin: auto;
+  width: 100%;
+  height: 100%;
   background: white;
-
+  @media screen and (min-width: 768px) {
+    margin: auto;
+    height: auto;
+    max-width: 680px;
+  }
   &__link {
     color: $color--primary;
     display: block;
@@ -875,4 +889,21 @@
   max-width: 100%;
   height: auto;
   margin: auto;
+}
+
+.kassir-iframe {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  @media screen and (min-width: 768px) {
+    max-width: 640px;
+  }
+  @media screen and (min-width: 1024px) {
+    max-width: 840px;
+    max-height: 590px;
+  }
+  iframe {
+    width: 100%;
+    height: 100%;
+  }
 }
