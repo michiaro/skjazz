@@ -22,7 +22,7 @@ export default {
     getYearId(yearNumber) {
       return `year${yearNumber}`;
     },
-  }
+  },
 };
 </script>
 

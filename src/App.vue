@@ -438,10 +438,10 @@
         swiper-slide.popup__slide
           iframe(
             v-if="slide.videoId",
-            :src="'https://www.youtube.com/embed/'+slide.videoId+'?rel=0&amp;controls=0&amp;showinfo=0'",
+            :src="getVideoSrc(slide.videoId)",
             frameborder="0",
             allow="autoplay; encrypted-media",
-            allowfullscreen
+            allowfullscreen=""
           ).popup__video
           img(
             v-else,
@@ -450,7 +450,7 @@
       .swiper-pagination.swiper-pagination-white.js-gallery-pagination(slot="pagination")
       .swiper-button-next.swiper-button-white.js-gallery-next(slot="button-next")
       .swiper-button-prev.swiper-button-white.js-gallery-prev(slot="button-prev")
-  .popup(v-if="currentArtist").main(@click.self="closeArtist")
+  .popup.main(v-if="currentArtist" @click.self="closeArtist")
     button.popup__close(@click.stop="closeArtist")
       svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 371.23 371.23")
         path(d=`M371.23 21.213L350.018 0 185.615 164.402 21.213 0 0 21.213l164.402
@@ -463,7 +463,7 @@
       .artist-info__about(v-html="currentArtist.about")
       .artist-info__ok
         button.button.button--primary(@click="closeArtist") Ок, спасибо!
-  .popup(v-if="currentDiscussion").main(@click.self="closeDiscussion")
+  .popup.main(v-if="currentDiscussion" @click.self="closeDiscussion")
     button.popup__close(@click.stop="closeDiscussion")
       svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 371.23 371.23")
         path(d=`M371.23 21.213L350.018 0 185.615 164.402 21.213 0 0 21.213l164.402
@@ -800,6 +800,9 @@ export default {
     },
     closeDiscussion() {
       this.currentDiscussion = null;
+    },
+    getVideoSrc(videoId) {
+      return `https://www.youtube.com/embed/${videoId}?rel=0&amp;controls=0&amp;showinfo=0`;
     },
   },
 };
