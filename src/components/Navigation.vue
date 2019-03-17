@@ -1,10 +1,10 @@
 <template lang="pug">
   nav.nav
-    a.nav__link(href="#program" @click="onClick") Программа
-    a.nav__link(href="#artists" @click="onClick") Артисты
-    a.nav__link(href="#discuss" @click="onClick") Дискуссии
+    //- a.nav__link(href="#program" @click="onClick") Программа
+    //- a.nav__link(href="#artists" @click="onClick") Артисты
+    //- a.nav__link(href="#discuss" @click="onClick") Дискуссии
     a.nav__link(href="#howitwas" @click="onClick") Как это было
-    a.nav__link(href="#partners" @click="onClick") Партнеры
+    //- a.nav__link(href="#partners" @click="onClick") Партнеры
     a.nav__link(href="#contact" @click="onClick") Контакты
 </template>
 
@@ -23,7 +23,8 @@ export default {
 .nav {
   display: flex;
   flex-flow: column;
-  justify-content: space-between;
+  // justify-content: space-between;
+  justify-content: center;
   align-items: center;
 
   @media screen and (min-width: 1200px) {

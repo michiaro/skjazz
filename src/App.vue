@@ -24,8 +24,8 @@
             navigation(:onClick="toggleMenu")
             a.nav__link.nav__link--contrast(
               target="_blank",
-              href="https://msk.kassir.ru/frame/entry/index?key=115acf3b-5419-dff7-9a70-365c430d8d08&type=E&id=152421",
-              onClick="return window.kassirWidget.summon()"
+              href="https://msk.kassir.ru/frame/entry/index?key=115acf3b-5419-dff7-9a70-365c430d8d08&type=E&id=152421"
+              onclick="return window.kassirWidget.summon()"
             ) Купить билеты
         header.header(v-if="!isMobile", v-cloak="")
           a.logo(href="/")
@@ -40,8 +40,8 @@
               | Москва | ИЦ Сколково
             a.nav__link.nav__link--contrast(
               target="_blank",
-              href="https://msk.kassir.ru/frame/entry/index?key=115acf3b-5419-dff7-9a70-365c430d8d08&type=E&id=152421",
-              onClick="return window.kassirWidget.summon()"
+              href="https://msk.kassir.ru/frame/entry/index?key=115acf3b-5419-dff7-9a70-365c430d8d08&type=E&id=152421"
+              onclick="return window.kassirWidget.summon()"
             ) Купить билеты
         .content
           .content__small
@@ -60,8 +60,8 @@
           .content__mobile-buy-tickets
             a.button.button--contrast(
               target="_blank",
-              href="https://msk.kassir.ru/frame/entry/index?key=115acf3b-5419-dff7-9a70-365c430d8d08&type=E&id=152421",
-              onClick="return window.kassirWidget.summon()"
+              href="https://msk.kassir.ru/frame/entry/index?key=115acf3b-5419-dff7-9a70-365c430d8d08&type=E&id=152421"
+              onclick="return window.kassirWidget.summon()"
             ) Купить билеты
           .content-aside
             .social
@@ -81,7 +81,7 @@
       #js-molecule-4.molecule.molecule--4
       #js-molecule-5.molecule.molecule--5
       #js-molecule-6.molecule.molecule--6
-    section#program.program.section
+    //- section#program.program.section
       .container
         h2.section__heading Программа
         Years(:currentYear="currentYear", @set="setYear", :years="[2016, 2017, 2018]")
@@ -108,10 +108,10 @@
       .call-to-action
         a.button.button--primary(
           target="_blank",
-          href="https://msk.kassir.ru/frame/entry/index?key=115acf3b-5419-dff7-9a70-365c430d8d08&type=E&id=152421",
-          onClick="return window.kassirWidget.summon()"
+          href="https://msk.kassir.ru/frame/entry/index?key=115acf3b-5419-dff7-9a70-365c430d8d08&type=E&id=152421"
+          onclick="return window.kassirWidget.summon()"
         ) Купить Билеты
-    section#artists.artists.section.section--contrast
+    //- section#artists.artists.section.section--contrast
       .container
         h2.section__heading Артисты
         Years(:currentYear="currentYear", :isContrast="true", @set="setYear", :years="[2016, 2017, 2018]")
@@ -131,10 +131,10 @@
         .call-to-action
           a.button.button--contrast(
             target="_blank",
-            href="https://msk.kassir.ru/frame/entry/index?key=115acf3b-5419-dff7-9a70-365c430d8d08&type=E&id=152421",
-            onClick="return window.kassirWidget.summon()"
+            href="https://msk.kassir.ru/frame/entry/index?key=115acf3b-5419-dff7-9a70-365c430d8d08&type=E&id=152421"
+            onclick="return window.kassirWidget.summon()"
           ) Купить Билеты
-    section#discuss.discuss.section
+    //- section#discuss.discuss.section
       .container
         h2.section__heading Дискуссии
         Years(:currentYear="currentYear", @set="setYear", :years="[2018]")
@@ -388,29 +388,29 @@
       .call-to-action
         a.button.button--primary(
           target="_blank",
-          href="https://msk.kassir.ru/frame/entry/index?key=115acf3b-5419-dff7-9a70-365c430d8d08&type=E&id=152421",
-          onClick="return window.kassirWidget.summon()"
+          href="https://msk.kassir.ru/frame/entry/index?key=115acf3b-5419-dff7-9a70-365c430d8d08&type=E&id=152421"
+          onclick="return window.kassirWidget.summon()"
         ) Купить Билеты
     //- section#partners.partners.section(v-if="mainPartners")
-    //-   .container
-    //-     h2.section__heading Информационные партнеры
-    //-     .partners__list.partners__list--info
-    //-       a.partners__link.partners__link--info(
-    //-         v-for="partner in mainPartners",
-    //-         :href="partner.link",
-    //-         target="_blank",
-    //-         rel="noopener noreferrer nofollow")
-    //-         img.partners__logo(:src="partner.photo.path")
+      .container
+        h2.section__heading Информационные партнеры
+        .partners__list.partners__list--info
+          a.partners__link.partners__link--info(
+            v-for="partner in mainPartners",
+            :href="partner.link",
+            target="_blank",
+            rel="noopener noreferrer")
+            img.partners__logo(:src="partner.photo.path")
     //- section#partners.partners.section(v-if="partners")
-    //-   .container
-    //-     h2.section__heading Партнеры
-    //-     .partners__list
-    //-       a.partners__link(
-    //-         v-for="partner in partners",
-    //-         :href="partner.link",
-    //-         target="_blank",
-    //-         rel="noopener noreferrer nofollow")
-    //-         img.partners__logo(:src="partner.photo.path")
+      .container
+        h2.section__heading Партнеры
+        .partners__list
+          a.partners__link(
+            v-for="partner in partners",
+            :href="partner.link",
+            target="_blank",
+            rel="noopener noreferrer")
+            img.partners__logo(:src="partner.photo.path")
     section#rules.section.section--contrast
       .container
         h2.section__heading Правила фестиваля
@@ -493,6 +493,7 @@ export default {
         slidesPerView: 4,
         observer: true,
         observeParents: true,
+        initialSlide: 8,
         breakpoints: {
           767: {
             slidesPerView: 1,
@@ -505,7 +506,7 @@ export default {
           },
         },
       },
-      activeIndex: 0,
+      activeIndex: 8,
       gallery: {
         image_2016_01: {
           thumb: 'static/img/2016-1.jpg',

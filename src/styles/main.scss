@@ -907,3 +907,24 @@
     height: 100%;
   }
 }
+
+.years {
+  text-align: center;
+
+  &__item {
+    cursor: pointer;
+    background: none;
+    font-size: 18px;
+    margin: 0 10px;
+    border: none;
+    color: #038ed2;
+    padding: 8px 16px;
+    text-decoration: underline;
+
+    &--active {
+      background: #038ed2;
+    color: #fff;
+    text-decoration: none;
+    }
+  }
+}
