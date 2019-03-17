@@ -6,6 +6,12 @@
         header.mobile-header(v-if="isMobile", v-cloak="")
           a.mobile-logo(href="/")
             img.mobile-logo__img(src="static/img/logo.png")
+          .info
+            .info__date 24 августа
+            .info__place
+              | 12:00 — 23:00
+              br
+              | Москва | ИЦ Сколково
           button.hamburger.hamburger--emphatic(
             :class="{'is-active' : isMenuOpen}",
             type="button",
@@ -15,35 +21,28 @@
               span.hamburger-inner
         transition(name="slide")
           aside#left-menu.panel(v-if="isMobile && isMenuOpen", v-cloak="")
-            .info
-              .info__date 25 августа
-              .info__place Москва | Сколково
-            nav.nav
-              ul.nav__list
-                a.nav__link(href="#howitwas") Как это было
-                a.nav__link(href="#artists") Артисты
-                a.nav__link(href="#program") Программа
-                a.nav__link(href="#partners") Партнеры
-                a.nav__link.nav__link--contrast(
-                  target="_blank",
-                  href="https://msk.kassir.ru/frame/event/104230?key=d68c4b88-00fb-ee51-8fdd-fec9d1c99539"
-                ) Купить Билеты
+            navigation(:onClick="toggleMenu")
+            a.nav__link.nav__link--contrast(
+              target="_blank",
+              href="https://msk.kassir.ru/frame/entry/index?key=115acf3b-5419-dff7-9a70-365c430d8d08&type=E&id=152421"
+              onclick="return window.kassirWidget.summon()"
+            ) Купить билеты
         header.header(v-if="!isMobile", v-cloak="")
           a.logo(href="/")
             img.logo__img(src="static/img/logo.png")
-          nav.nav
-            ul.nav__list
-              a.nav__link(href="#howitwas") Как это было
-              a.nav__link(href="#artists") Артисты
-              a.nav__link(href="#program") Программа
-              a.nav__link(href="#partners") Партнеры
-              a.nav__link.nav__link--contrast(
-                target="_blank",
-                href="https://msk.kassir.ru/frame/event/104230?key=d68c4b88-00fb-ee51-8fdd-fec9d1c99539"
-              ) Купить Билеты
+          .header__nav
+            navigation(:onClick="toggleMenu")
           .info
-            .info__date 25 августа
-            .info__place Москва | Сколково
+            .info__date 24 августа
+            .info__place
+              | 12:00 — 23:00
+              br
+              | Москва | ИЦ Сколково
+            a.nav__link.nav__link--contrast(
+              target="_blank",
+              href="https://msk.kassir.ru/frame/entry/index?key=115acf3b-5419-dff7-9a70-365c430d8d08&type=E&id=152421"
+              onclick="return window.kassirWidget.summon()"
+            ) Купить билеты
         .content
           .content__small
             | это непередаваемая
@@ -55,9 +54,15 @@
           .content__primary
             | место, где наука
             br
-            |  и музыка соединяются, —
+            |  и музыка соединяются,
             br
             |  превращаясь в магию
+          .content__mobile-buy-tickets
+            a.button.button--contrast(
+              target="_blank",
+              href="https://msk.kassir.ru/frame/entry/index?key=115acf3b-5419-dff7-9a70-365c430d8d08&type=E&id=152421"
+              onclick="return window.kassirWidget.summon()"
+            ) Купить билеты
           .content-aside
             .social
               a.social__link.social__link--insta(
@@ -76,9 +81,73 @@
       #js-molecule-4.molecule.molecule--4
       #js-molecule-5.molecule.molecule--5
       #js-molecule-6.molecule.molecule--6
-    section#howitwas.howitwas
+    //- section#program.program.section
       .container
-        h2.howitwas__heading.heading Как это было?
+        h2.section__heading Программа
+        Years(:currentYear="currentYear", @set="setYear", :years="[2016, 2017, 2018]")
+        .program__content(v-if="currentYear === 'year2016'")
+          img.program__img(:src="content.year2016.programm.photo.path", alt="Программа фестиваля 2016")
+          .program__text(v-html="content.year2016.programm.content")
+        .program__content(v-if="currentYear === 'year2017'")
+          img.program__img(:src="content.year2017.programm.photo.path", alt="Программа фестиваля 2017")
+          .program__text(v-html="content.year2017.programm.content")
+        .program__content.program__content--slider(v-if="currentYear === 'year2018'")
+          swiper(:options="programmSliderOptions" ref="programmSwiper")
+            template(v-for="section in content.year2018.programm")
+              swiper-slide.program__section
+                .program__section-photo(:style="{'backgroundImage': 'url('+section.photo.path+')'}")
+                .program__section-description
+                  h2 {{section.title}}
+                  div(v-html="section.content")
+            .swiper-pagination.swiper-pagination-contrast.js-programm-pagination(slot="pagination")
+          .swiper-button-next.js-programm-next.program__button-next
+          .swiper-button-prev.js-programm-prev.program__button-prev
+        //- .lecture
+        //-   h2.section__heading Расписание лектория
+        //-   .program__text(v-html="content.schedule.content")
+      .call-to-action
+        a.button.button--primary(
+          target="_blank",
+          href="https://msk.kassir.ru/frame/entry/index?key=115acf3b-5419-dff7-9a70-365c430d8d08&type=E&id=152421"
+          onclick="return window.kassirWidget.summon()"
+        ) Купить Билеты
+    //- section#artists.artists.section.section--contrast
+      .container
+        h2.section__heading Артисты
+        Years(:currentYear="currentYear", :isContrast="true", @set="setYear", :years="[2016, 2017, 2018]")
+        .row
+          .col.col-xs-12.col-sm-6.col-lg-3(v-for="artist in content[currentYear].artists")
+            .artists__block(
+              @click="openArtist(artist)",
+              :class="{'artists__block--clickable':artist.about}")
+              img.artists__img(
+                :src="artist.photo.path",
+                :alt="artist.name",
+                :title="artist.alreadyPerformed ? 'Уже выступил' : null",
+                :class="{'artists__img--muted' : artist.alreadyPerformed}"
+              )
+              .artists__name {{artist.name}}
+        //- img.preview.artists__timing(src="static/img/artists_timing.png")
+        .call-to-action
+          a.button.button--contrast(
+            target="_blank",
+            href="https://msk.kassir.ru/frame/entry/index?key=115acf3b-5419-dff7-9a70-365c430d8d08&type=E&id=152421"
+            onclick="return window.kassirWidget.summon()"
+          ) Купить Билеты
+    //- section#discuss.discuss.section
+      .container
+        h2.section__heading Дискуссии
+        Years(:currentYear="currentYear", @set="setYear", :years="[2018]")
+        .row.discuss__block
+          .col.col-xs-12
+            img(src="static/img/viskuss-1.png").preview.discuss__photo
+          .col.col-xs-12.col-lg-6
+            img(src="static/img/viskuss-2.png", @click="openDiscussion('static/img/viskuss-2.png')").preview.discuss__photo
+          .col.col-xs-12.col-lg-6
+            img(src="static/img/viskuss-3.png", @click="openDiscussion('static/img/viskuss-3.png')").preview.discuss__photo
+    section#howitwas.howitwas.section
+      .container
+        h2.section__heading Как это было?
         p
         .years
           button.years__item(
@@ -87,8 +156,12 @@
             ) 2016
           button.years__item(
             @click="slideTo(4)",
-            :class="{'years__item--active': activeIndex >= 4}"
+            :class="{'years__item--active': activeIndex >= 4 && activeIndex < 8}"
             ) 2017
+          button.years__item(
+            @click="slideTo(8)",
+            :class="{'years__item--active': activeIndex >= 8}"
+            ) 2018
       .collage
         swiper(:options="newsfeedOption" ref="newsfeedSwiper")
           swiper-slide
@@ -97,19 +170,19 @@
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
-                    .collage__block
+                    .collage__block.collage__block--link
                       preview(:source="gallery.image_2016_01", @open="openGallery")
               .col.col-xs-6
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
-                    .collage__block
+                    .collage__block.collage__block--link
                       preview(:source="gallery.image_2016_02", @open="openGallery")
               .col.col-xs-12
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
-                    .collage__block
+                    .collage__block.collage__block--link
                       preview(:source="gallery.image_2016_03", @open="openGallery")
           swiper-slide
             .row
@@ -117,7 +190,7 @@
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x4
                   .ratio__content
-                    .collage__block
+                    .collage__block.collage__block--link
                       preview(:source="gallery.image_2016_04", @open="openGallery")
               .col.col-xs-6
                 .ratio
@@ -131,7 +204,7 @@
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
-                    .collage__block
+                    .collage__block.collage__block--link
                       preview(:source="gallery.image_2016_05", @open="openGallery")
             .row
               .col.col-xs-6
@@ -141,13 +214,13 @@
                     .collage__block
                       .collage__text
                         .collage__text--primary 12
-                        .collage__text--default приглашенных артистов
+                        .collage__text--default артистов
                         .collage__text--secondary Российские и мировые имена
               .col.col-xs-6
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
-                    .collage__block
+                    .collage__block.collage__block--link
                       preview(:source="gallery.image_2016_06", @open="openGallery")
           swiper-slide
             .row
@@ -155,13 +228,13 @@
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
-                    .collage__block
+                    .collage__block.collage__block--link
                       preview(:source="gallery.image_2016_07", @open="openGallery")
               .col.col-xs-6
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
-                    .collage__block
+                    .collage__block.collage__block--link
                       preview(:source="gallery.image_2016_08", @open="openGallery")
               .col.col-xs-6
                 .ratio
@@ -176,19 +249,19 @@
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
-                    .collage__block
+                    .collage__block.collage__block--link
                       preview(:source="gallery.image_2016_09", @open="openGallery")
               .col.col-xs-6
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
-                    .collage__block
+                    .collage__block.collage__block--link
                       preview(:source="gallery.image_2016_10", @open="openGallery")
               .col.col-xs-12
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
-                    .collage__block
+                    .collage__block.collage__block--link
                       preview(:source="gallery.image_2016_11", @open="openGallery")
           swiper-slide
             .row
@@ -196,19 +269,19 @@
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
-                    .collage__block
+                    .collage__block.collage__block--link
                       preview(:source="gallery.image_2017_01", @open="openGallery")
               .col.col-xs-6
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
-                    .collage__block
+                    .collage__block.collage__block--link
                       preview(:source="gallery.image_2017_02", @open="openGallery")
               .col.col-xs-12
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
-                    .collage__block
+                    .collage__block.collage__block--link
                       preview(:source="gallery.image_2017_03", @open="openGallery")
           swiper-slide
             .row
@@ -216,7 +289,7 @@
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x4
                   .ratio__content
-                    .collage__block
+                    .collage__block.collage__block--link
                       preview(:source="gallery.image_2017_04", @open="openGallery")
               .col.col-xs-6
                 .ratio
@@ -230,7 +303,7 @@
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
-                    .collage__block
+                    .collage__block.collage__block--link
                       preview(:source="gallery.image_2017_05", @open="openGallery")
             .row
               .col.col-xs-6
@@ -240,13 +313,13 @@
                     .collage__block
                       .collage__text
                         .collage__text--primary 10
-                        .collage__text--default приглашенных артистов
+                        .collage__text--default артистов
                         .collage__text--secondary Российские и мировые имена
               .col.col-xs-6
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
-                    .collage__block
+                    .collage__block.collage__block--link
                       preview(:source="gallery.image_2017_06", @open="openGallery")
           swiper-slide
             .row
@@ -254,13 +327,13 @@
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
-                    .collage__block
+                    .collage__block.collage__block--link
                       preview(:source="gallery.image_2017_07", @open="openGallery")
               .col.col-xs-6
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
-                    .collage__block
+                    .collage__block.collage__block--link
                       preview(:source="gallery.image_2017_08", @open="openGallery")
               .col.col-xs-6
                 .ratio
@@ -269,7 +342,7 @@
                     .collage__block
                       .collage__text
                         .collage__text--primary 2
-                        .collage__text--default открытые дискусии
+                        .collage__text--default открытые дискуссии
                         .collage__text--secondary Известные ученые, журналисты и медийные персоны
           swiper-slide
             .row
@@ -277,88 +350,138 @@
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
-                    .collage__block
+                    .collage__block.collage__block--link
                       preview(:source="gallery.image_2017_09", @open="openGallery")
               .col.col-xs-6
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
-                    .collage__block
+                    .collage__block.collage__block--link
                       preview(:source="gallery.image_2017_10", @open="openGallery")
               .col.col-xs-12
                 .ratio
                   .ratio__expander.ratio__expander--xs-3x2
                   .ratio__content
-                    .collage__block
+                    .collage__block.collage__block--link
                       preview(:source="gallery.image_2017_11", @open="openGallery")
-    section#artists.artists
+          swiper-slide
+            .row
+              .col.col-xs-12
+                .ratio
+                  .ratio__expander.ratio__expander--xs-3x2
+                  .ratio__content
+                    .collage__block.collage__block--link
+                      preview(:source="gallery.image_2018_01", @open="openGallery")
+              .col.col-xs-6
+                .ratio
+                  .ratio__expander.ratio__expander--xs-3x2
+                  .ratio__content
+                    .collage__block.collage__block--link
+                      preview(:source="gallery.image_2018_02", @open="openGallery")
+              .col.col-xs-6
+                .ratio
+                  .ratio__expander.ratio__expander--xs-3x2
+                  .ratio__content
+                    .collage__block.collage__block--link
+                      preview(:source="gallery.image_2018_03", @open="openGallery")
+
+      .call-to-action
+        a.button.button--primary(
+          target="_blank",
+          href="https://msk.kassir.ru/frame/entry/index?key=115acf3b-5419-dff7-9a70-365c430d8d08&type=E&id=152421"
+          onclick="return window.kassirWidget.summon()"
+        ) Купить Билеты
+    //- section#partners.partners.section(v-if="mainPartners")
       .container
-        h2.artists__heading.heading Приглашенные артисты
-        Years(:currentYear="currentYear", :isContrast="true", @set="setYear")
-        .row
-          .col.col-xs-12.col-sm-6.col-lg-3(v-for="artist in content[currentYear].artists")
-            .artists__block
-              img.artists__img(:src="artist.src", :alt="artist.name")
-              .artists__name {{artist.name}}
-    section#program.program
+        h2.section__heading Информационные партнеры
+        .partners__list.partners__list--info
+          a.partners__link.partners__link--info(
+            v-for="partner in mainPartners",
+            :href="partner.link",
+            target="_blank",
+            rel="noopener noreferrer")
+            img.partners__logo(:src="partner.photo.path")
+    //- section#partners.partners.section(v-if="partners")
       .container
-        h2.heading Программа
-        Years(:currentYear="currentYear", @set="setYear")
-        .program__content(v-if="currentYear === 'year2016'")
-          img.program__img(src="static/img/program-2016.png", alt="Программа фестиваля 2016")
-          .program__text
-            p Помимо музыкальной программы, на&nbsp;фестивале можно было посетить научно-популярные
-              | лекции, принять участие в&nbsp;мастер-классах от&nbsp;Культурного Центра ЗИЛ
-              | и&nbsp;Playtronica,
-              | а&nbsp;также интерактивных инсталляциях от&nbsp;Петра Айду, Vtol: (проект Дмитрия
-              | Морозова) и&nbsp;Музея Скрябина. Для меломанов и&nbsp;любопытствующих работал Маркет
-              | винила, где можно было приобрести или обменять редкие пластинки. Также
-              | в&nbsp;рамках SkolkovoJazz прошел Фестиваль фудтраков, который объединил самые
-              | любимые и&nbsp;известные проекты московского стрит-фуда.
-            p Для самых маленьких гостей была организована программа
-              | от&nbsp;семейного кафе &laquo;Андерсон&raquo; и&nbsp;&laquo;SHUSHA-TOYS&raquo;
-        .program__content(v-if="currentYear === 'year2017'")
-          img.program__img(src="static/img/program-2017.png", alt="Программа фестиваля 2017")
-          .program__text
-            p В рамках программы 2017 года на&nbsp;обеих сценах чередовались
-              | выступления музыкальных коллективов и&nbsp;паблик-токов с&nbsp;участием
-              | признанных деятелей науки, медиа и&nbsp;журналистики, таких как
-              | Татьяна Черниговская, Александр Архангельский, Владимир Раевский
-              | и&nbsp;Сергей Паранько.
-            p Научная программа была посвящена теме симбиоза науки о&nbsp;человеческом
-              | восприятии и&nbsp;различных
-              | видов искусства. В&nbsp;коллаборации с&nbsp;фестивалем науки
-              | &laquo;WOW!HOW?&raquo;,
-              | Занимательным Музеем наук &laquo;Эксперементаниум&raquo; и&nbsp;Планетарием
-              | были созданы интерактивные зоны и&nbsp;арт-объекты, визуализирующие идею
-              | синергии музыки и&nbsp;науки.
-            p Юные посетители фестиваля приняли участие в&nbsp;специальных активностях,
-              | разработанных для
-              | детей нашими партнерами &laquo;Лигой роботов&raquo; и&nbsp;Гигантскими
-              | головоломками. Для всех гостей на&nbsp;территории фестиваля были организованы
-              | Книжная ярмарка и&nbsp;Винил-маркет, а&nbsp;также фестиваль фудтраков, дополненный
-              | изысканным выездным рестораном от&nbsp;OsteriaMario.
-    section#partners.partners
+        h2.section__heading Партнеры
+        .partners__list
+          a.partners__link(
+            v-for="partner in partners",
+            :href="partner.link",
+            target="_blank",
+            rel="noopener noreferrer")
+            img.partners__logo(:src="partner.photo.path")
+    section#rules.section.section--contrast
       .container
-        h2.heading Партнеры
-        img(src="static/img/partners.png", alt="Партнеры", class="preview")
+        h2.section__heading Правила фестиваля
+        .rules(v-html="content.rules.content")
+    section#coordinates.coordinates.section
+      .container
+        h2.section__heading Как добраться
+        p В течение всего дня будут курсировать бесплатные шатлы от станции метро Парк Победы до места проведения фестиваля
+        //- img(src="static/img/bus.png").preview.coordinates__photo
+        //- img(src="static/img/taxi_or_car.png").preview.coordinates__photo
+        //- img(src="static/img/parking_free.png").preview.coordinates__photo
+    section#contact.contact.section
+      .container
+        h2.section__heading Контакты
+        p По вопросам сотрудничества:&nbsp;
+          a(href="mailto:info@skjazz.ru") info@skjazz.ru
   .popup(v-if="isGalleryOpen")
     button.popup__close(@click.stop="closeGallery")
       svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 371.23 371.23")
-        path(d="M371.23 21.213L350.018 0 185.615 164.402 21.213 0 0 21.213l164.402 164.402L0 350.018l21.213 21.212 164.402-164.402L350.018 371.23l21.212-21.212-164.402-164.403z")
+        path(d=`M371.23 21.213L350.018 0 185.615 164.402 21.213 0 0 21.213l164.402
+        164.402L0 350.018l21.213 21.212
+        164.402-164.402L350.018 371.23l21.212-21.212-164.402-164.403z`)
     swiper(:options="galleryOptions" ref="gallerySwiper")
       template(v-for="slide in gallery")
         swiper-slide.popup__slide
-          img(:src="slide.full").popup__image
-      .swiper-pagination.swiper-pagination-white(slot="pagination")
-      .swiper-button-prev.swiper-button-white(slot="button-prev")
-      .swiper-button-next.swiper-button-white(slot="button-next")
+          iframe(
+            v-if="slide.videoId",
+            :src="getVideoSrc(slide.videoId)",
+            frameborder="0",
+            allow="autoplay; encrypted-media",
+            allowfullscreen=""
+          ).popup__video
+          img(
+            v-else,
+            :src="slide.full"
+          ).popup__image
+      .swiper-pagination.swiper-pagination-white.js-gallery-pagination(slot="pagination")
+      .swiper-button-next.swiper-button-white.js-gallery-next(slot="button-next")
+      .swiper-button-prev.swiper-button-white.js-gallery-prev(slot="button-prev")
+  .popup.main(v-if="currentArtist" @click.self="closeArtist")
+    button.popup__close(@click.stop="closeArtist")
+      svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 371.23 371.23")
+        path(d=`M371.23 21.213L350.018 0 185.615 164.402 21.213 0 0 21.213l164.402
+        164.402L0 350.018l21.213 21.212
+        164.402-164.402L350.018 371.23l21.212-21.212-164.402-164.403z`)
+    .artist-info
+      .artist-info__photo(v-if="currentArtist.photoWide")
+        img.preview(:src="currentArtist.photoWide.path", :alt="currentArtist.name")
+      a.artist-info__link(:href="currentArtist.link") {{currentArtist.link}}
+      .artist-info__about(v-html="currentArtist.about")
+      .artist-info__ok
+        button.button.button--primary(@click="closeArtist") Ок, спасибо!
+  .popup.main(v-if="currentDiscussion" @click.self="closeDiscussion")
+    button.popup__close(@click.stop="closeDiscussion")
+      svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 371.23 371.23")
+        path(d=`M371.23 21.213L350.018 0 185.615 164.402 21.213 0 0 21.213l164.402
+        164.402L0 350.018l21.213 21.212
+        164.402-164.402L350.018 371.23l21.212-21.212-164.402-164.403z`)
+    img(:src="currentDiscussion").preview.discussion-popup
 </template>
 
 <script>
 /* eslint-disable no-console, no-plusplus */
+import Navigation from '@/components/Navigation';
+import api from '@/api/';
+
 export default {
   name: 'App',
+  components: {
+    Navigation,
+  },
   data() {
     return {
       isMenuOpen: false,
@@ -370,19 +493,20 @@ export default {
         slidesPerView: 4,
         observer: true,
         observeParents: true,
+        initialSlide: 8,
         breakpoints: {
-          575: {
+          767: {
             slidesPerView: 1,
           },
-          767: {
+          1200: {
             slidesPerView: 2,
           },
-          1023: {
+          1600: {
             slidesPerView: 3,
           },
         },
       },
-      activeIndex: 0,
+      activeIndex: 8,
       gallery: {
         image_2016_01: {
           thumb: 'static/img/2016-1.jpg',
@@ -409,8 +533,9 @@ export default {
           full: 'static/img/2016/6.jpg',
         },
         image_2016_07: {
-          thumb: 'static/img/2016-7.jpg',
+          thumb: 'static/img/video-2016.gif',
           full: 'static/img/2016/7.jpg',
+          videoId: '7AEgOSzbBDY',
         },
         image_2016_08: {
           thumb: 'static/img/2016-8.jpg',
@@ -453,8 +578,9 @@ export default {
           full: 'static/img/2017/6.jpg',
         },
         image_2017_07: {
-          thumb: 'static/img/2017-7.png',
+          thumb: 'static/img/video-2017.gif',
           full: 'static/img/2017/7.jpg',
+          videoId: 'aMwDBSLd2d8',
         },
         image_2017_08: {
           thumb: 'static/img/2017-8.png',
@@ -472,54 +598,64 @@ export default {
           thumb: 'static/img/2017-11.png',
           full: 'static/img/2017/11.jpg',
         },
+        image_2018_01: {
+          thumb: 'static/img/video-2018.gif',
+          full: 'static/img/2017/7.jpg',
+          videoId: '5A5zxLaytDI',
+        },
+        image_2018_02: {
+          thumb: 'static/img/2017-10.png',
+          full: 'static/img/2017/10.jpg',
+        },
+        image_2018_03: {
+          thumb: 'static/img/2017-11.png',
+          full: 'static/img/2017/11.jpg',
+        },
       },
       isGalleryOpen: false,
       galleryOptions: {
         pagination: {
-          el: '.swiper-pagination',
+          el: '.js-gallery-pagination',
         },
         navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
+          nextEl: '.js-gallery-next',
+          prevEl: '.js-gallery-prev',
         },
         initialSlide: 0,
       },
-      currentYear: 'year2016',
+      currentYear: 'year2018',
       content: {
+        year2018: {
+          title: '2018',
+          artists: [],
+          programm: [],
+        },
         year2017: {
           title: '2017',
-          artists: [
-            { src: 'static/img/marimba.png', name: 'Маримба+' },
-            { src: 'static/img/scristian.png', name: 'Cristian Sans Trio' },
-            { src: 'static/img/dummy-1.png', name: '' },
-            { src: 'static/img/musicaviva.png', name: 'Московский камерный оркестр Musicviva и Юрий Фаворин' },
-            { src: 'static/img/dummy-2.png', name: '' },
-            { src: 'static/img/butman.png', name: 'Московский джазовый оркестр под управлением Игоря Бутмана' },
-            { src: 'static/img/jukebox.png', name: 'Jukebox' },
-            { src: 'static/img/pii.png', name: 'Число Пи' },
-            { src: 'static/img/anton-g.png', name: 'Антон Маскелиаде' },
-            { src: 'static/img/azekel.png', name: 'Azekel' },
-            { src: 'static/img/jekka.png', name: 'Jekka' },
-            { src: 'static/img/blinder.png', name: 'Yana Blinder' },
-          ],
+          artists: [],
+          programm: {},
         },
         year2016: {
           title: '2016',
-          artists: [
-            { src: 'static/img/ilya-i-azat.png', name: 'Группа Ильи Морозова и Азата Баязитова' },
-            { src: 'static/img/sergey-quintet.png', name: 'Квинтет Сергея Долженкова' },
-            { src: 'static/img/vsdims-group.png', name: 'Вадим Эйленкриг и его группа' },
-            { src: 'static/img/oleg-trio.png', name: 'Трио Олега Аккуратова' },
-            { src: 'static/img/till-quintet.png', name: 'Till Brönner Quintet' },
-            { src: 'static/img/igor-i-moscow-jazzband.png', name: 'Игорь Бутман и Московский джазовый оркестр' },
-            { src: 'static/img/july-afterjuly.png', name: 'July AfterJuly' },
-            { src: 'static/img/teslaboy.png', name: 'Группа TeslaBoy' },
-            { src: 'static/img/baronin-a.png', name: 'Антон Баронин' },
-            { src: 'static/img/toymintseva-a.png', name: 'Алена Тойминцева' },
-            { src: 'static/img/guru-groove.png', name: 'Guru Groove Foundation' },
-            { src: 'static/img/tony-momrelle-band.png', name: 'Tony Momrelle Band' }],
+          artists: [],
+          programm: {},
+        },
+        rules: '',
+        schedule: '',
+      },
+      currentArtist: null,
+      partners: null,
+      mainPartners: null,
+      programmSliderOptions: {
+        pagination: {
+          el: '.js-programm-pagination',
+        },
+        navigation: {
+          nextEl: '.js-programm-next',
+          prevEl: '.js-programm-prev',
         },
       },
+      currentDiscussion: null,
     };
   },
   computed: {
@@ -534,6 +670,46 @@ export default {
     this.$nextTick(() => {
       window.addEventListener('resize', this.handleResize);
       this.handleResize();
+
+      api.getCollectionByKey('artists2016').then((artists) => {
+        this.content.year2016.artists = artists;
+      });
+
+      api.getCollectionByKey('artists2017').then((artists) => {
+        this.content.year2017.artists = artists;
+      });
+
+      api.getCollectionByKey('artists2018').then((artists) => {
+        this.content.year2018.artists = artists;
+      });
+
+      api.getCollectionByKey('programm2018').then((programm) => {
+        this.content.year2018.programm = programm;
+      });
+
+      api.getCollectionByKey('partners').then((partners) => {
+        this.partners = partners;
+      });
+
+      api.getCollectionByKey('mainPartners').then((mainPartners) => {
+        this.mainPartners = mainPartners;
+      });
+
+      api.getRegionByKey('programm2016').then((programm) => {
+        this.content.year2016.programm = programm;
+      });
+
+      api.getRegionByKey('programm2017').then((programm) => {
+        this.content.year2017.programm = programm;
+      });
+
+      api.getRegionByKey('rules').then((rules) => {
+        this.content.rules = rules;
+      });
+
+      api.getRegionByKey('schedule').then((schedule) => {
+        this.content.schedule = schedule;
+      });
 
       this.swiper.on('slideChangeTransitionEnd', () => {
         this.activeIndex = this.swiper.activeIndex;
@@ -591,13 +767,14 @@ export default {
       this.isMenuOpen = window.innerWidth >= 1200;
     },
     toggleMenu() {
+      console.log('toggleMenu');
       this.isMenuOpen = !this.isMenuOpen;
     },
     closeMenu() {
       this.isMenuOpen = false;
     },
     random() {
-      return Math.floor(Math.random() * 4) + 1;
+      return Math.floor(Math.random() * 3) + 1;
     },
     setYear(year) {
       this.currentYear = year;
@@ -612,6 +789,21 @@ export default {
     },
     closeGallery() {
       this.isGalleryOpen = false;
+    },
+    openArtist(artist) {
+      this.currentArtist = artist;
+    },
+    closeArtist() {
+      this.currentArtist = null;
+    },
+    openDiscussion(discussion) {
+      this.currentDiscussion = discussion;
+    },
+    closeDiscussion() {
+      this.currentDiscussion = null;
+    },
+    getVideoSrc(videoId) {
+      return `https://www.youtube.com/embed/${videoId}?rel=0&amp;controls=0&amp;showinfo=0`;
     },
   },
 };
